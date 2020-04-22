@@ -11,11 +11,11 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <Link to="/">Home</Link>
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>
         <Link to="/user">User</Link>
         <Link to="/detail">Detail</Link>
-        <Link to="/">Home</Link>
 
         <Switch>
           <Route path="/login" component={Login} />
