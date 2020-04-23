@@ -5,6 +5,14 @@ import CustomErrorMessage from "./CustomErrorMessage";
 
 class RegisterForm extends Component {
   render() {
+    const {
+      first_name,
+      last_name,
+      email,
+      password,
+      favorite_color,
+      avatar,
+    } = this.props;
     return (
       <Form>
         <div className="form-row mt-4">
@@ -91,6 +99,15 @@ class RegisterForm extends Component {
   }
 }
 
-RegisterForm.propTypes = {};
+RegisterForm.propTypes = {
+  first_name: PropTypes.string.isRequired,
+  last_name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  //vragen of we hier een email validator moeten schrijven.
+  password: PropTypes.string.isRequired,
+  //vragen of we hier een password strength meter moeten schrijven
+  favorite_color: PropTypes.string.isRequired,
+  avatar: PropTypes.node.isRequired,
+};
 
 export default RegisterForm;
