@@ -4,6 +4,7 @@ import RegisterForm from "../Components/RegisterForm";
 import Axios from "axios";
 
 class Register extends Component {
+  // onsubmit posting our values to api/users then if succesfull, redirect to login page. If not, display errors in console
   onSubmit = (values) => {
     console.log(values);
     Axios.post("https://eindwerk.jnnck.be/api/users", {
@@ -23,6 +24,7 @@ class Register extends Component {
       });
   };
 
+  // Validating the values and displaying error message if missing
   validate = (values) => {
     const errors = {};
 
@@ -32,15 +34,15 @@ class Register extends Component {
       "email",
       "password",
       "favorite_color",
-      // "avatar",
     ];
 
+    // Writing short loop to add error code to each field
     requiredFields.forEach((field) => {
       if (!values[field]) {
         errors[field] = "required";
       }
     });
-
+    // returning errors if there are errors
     return errors;
   };
   render() {
@@ -48,6 +50,7 @@ class Register extends Component {
       <div className="container">
         <Formik
           onSubmit={this.onSubmit}
+          // Making sure that the register form is always empty at the start
           initialValues={{
             first_name: "",
             last_name: "",
@@ -56,6 +59,7 @@ class Register extends Component {
           }}
           validate={this.validate}
         >
+          {/* Seperate our Forms for cleaner and shorter code */}
           <RegisterForm />
         </Formik>
       </div>

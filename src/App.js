@@ -10,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 class App extends Component {
   render() {
     return (
+      //Using react-router distribute our code into differents paths/pages on our site
       <Router>
         <Link to="/">Home</Link>
         <Link to="/login">Login</Link>
@@ -28,5 +29,9 @@ class App extends Component {
     );
   }
 }
+// TODO:::
+//TouchUp Register Form
+//Documentatie
+//Details: Strong Password, Emailvalidator zoal gezien in de les
 
 export default App;

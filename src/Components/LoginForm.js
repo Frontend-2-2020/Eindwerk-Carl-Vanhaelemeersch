@@ -4,6 +4,7 @@ import CustomErrorMessage from "./CustomErrorMessage";
 
 class LoginForm extends Component {
   render() {
+    // The Display of our form
     return (
       <Form className="container">
         <div className="form-group mt-4">
@@ -17,6 +18,7 @@ class LoginForm extends Component {
             autofocus
             required
           />
+          {/* shortening our code */}
           <CustomErrorMessage name="email" />
         </div>
 

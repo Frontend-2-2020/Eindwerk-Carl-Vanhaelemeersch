@@ -4,6 +4,7 @@ import CustomErrorMessage from "./CustomErrorMessage";
 
 class RegisterForm extends Component {
   render() {
+    // The Display of our form
     return (
       <Form>
         <div className="form-row mt-4">
@@ -17,6 +18,7 @@ class RegisterForm extends Component {
               required
               className="form-control"
             />
+            {/* Shortening our code */}
             <CustomErrorMessage name="first_name" />
           </div>
 
