@@ -1,23 +1,14 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Form, Field } from "formik";
 import CustomErrorMessage from "./CustomErrorMessage";
 
 class RegisterForm extends Component {
   render() {
-    const {
-      first_name,
-      last_name,
-      email,
-      password,
-      favorite_color,
-      avatar,
-    } = this.props;
     return (
       <Form>
         <div className="form-row mt-4">
           <div className="col-md-6">
-            <label>Voornaam</label>
+            <label htmlFor="first_name">Voornaam</label>
             <Field
               type="text"
               name="first_name"
@@ -30,7 +21,7 @@ class RegisterForm extends Component {
           </div>
 
           <div className="col-md-6">
-            <label>Achternaam</label>
+            <label htmlFor="last_name">Achternaam</label>
             <Field
               type="text"
               name="last_name"
@@ -43,7 +34,9 @@ class RegisterForm extends Component {
           </div>
         </div>
 
-        <label className="mt-4">Email</label>
+        <label htmlFor="email" className="mt-4">
+          Email
+        </label>
         <Field
           type="email"
           name="email"
@@ -54,7 +47,9 @@ class RegisterForm extends Component {
         />
         <CustomErrorMessage name="email" />
 
-        <label className="mt-4">Wachtwoord</label>
+        <label htmlFor="password" className="mt-4">
+          Wachtwoord
+        </label>
         <Field
           type="password"
           name="password"
@@ -67,7 +62,7 @@ class RegisterForm extends Component {
 
         <div className="form-row mt-4">
           <div className="col-md-6">
-            <label>Favoriete Kleur</label>
+            <label htmlFor="favorite_color">Favoriete Kleur</label>
             <Field
               type="color"
               name="favorite_color"
@@ -78,8 +73,8 @@ class RegisterForm extends Component {
             <CustomErrorMessage name="favorite_color" />
           </div>
 
-          <div className="col-md-6">
-            <label>Avatar</label>
+          {/* <div className="col-md-6">
+            <label htmlFor="avatar">Avatar</label>
             <Field
               type="file"
               name="avatar"
@@ -88,7 +83,7 @@ class RegisterForm extends Component {
               className="form-control"
             />
             <CustomErrorMessage name="avatar" />
-          </div>
+          </div> */}
         </div>
 
         <button type="submit" className="btn btn-primary float-right mt-4">
@@ -98,16 +93,5 @@ class RegisterForm extends Component {
     );
   }
 }
-
-RegisterForm.propTypes = {
-  first_name: PropTypes.string.isRequired,
-  last_name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  //vragen of we hier een email validator moeten schrijven.
-  password: PropTypes.string.isRequired,
-  //vragen of we hier een password strength meter moeten schrijven
-  favorite_color: PropTypes.string.isRequired,
-  avatar: PropTypes.node.isRequired,
-};
 
 export default RegisterForm;

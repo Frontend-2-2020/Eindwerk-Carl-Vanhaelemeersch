@@ -7,7 +7,7 @@ class LoginForm extends Component {
     return (
       <Form className="container">
         <div className="form-group mt-4">
-          <label for="email">Email address</label>
+          <label htmlFor="email">Email address</label>
           <Field
             name="email"
             type="email"
@@ -21,7 +21,7 @@ class LoginForm extends Component {
         </div>
 
         <div className="form-group mt-4">
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <Field
             name="password"
             type="password"
@@ -35,7 +35,7 @@ class LoginForm extends Component {
 
         {/* <div class="form-check mt-4">
           <Field type="checkbox" class="form-check-input" id="dropdownCheck2" />
-          <label class="form-check-label" for="dropdownCheck2">
+          <label class="form-check-label" htmlFor="dropdownCheck2">
             Remember me
           </label>
         </div> */}

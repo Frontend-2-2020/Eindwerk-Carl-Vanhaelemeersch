@@ -1,15 +1,29 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Formik } from "formik";
 import RegisterForm from "../Components/RegisterForm";
+import Axios from "axios";
 
 class Register extends Component {
   onSubmit = (values) => {
     console.log(values);
+    Axios.post("https://eindwerk.jnnck.be/api/users", {
+      first_name: values.first_name,
+      last_name: values.last_name,
+      favorite_color: values.favorite_color,
+      avatar: "https://api.adorable.io/avatars/285/" + values.email,
+      email: values.email,
+      password: values.password,
+    })
+      .then((response) => {
+        console.log(response);
+        this.props.history.push("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   validate = (values) => {
-    // console.log("validate"); Valideerd om de toetsindruk, eens vragen aan JNNCK
     const errors = {};
 
     const requiredFields = [
@@ -18,7 +32,7 @@ class Register extends Component {
       "email",
       "password",
       "favorite_color",
-      "avatar",
+      // "avatar",
     ];
 
     requiredFields.forEach((field) => {
@@ -48,6 +62,5 @@ class Register extends Component {
     );
   }
 }
-Register.propTypes = {};
 
 export default Register;
