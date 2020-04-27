@@ -5,8 +5,34 @@ import Axios from "axios";
 
 class Login extends Component {
   onSubmit = (values) => {
-    console.log(values);
-    Axios.post("https://eindwerk.jnnck.be/api/auth/token", {});
+    // check to see if we get our values
+    // console.log(values);
+
+    // posting our login data with our client data too the api too receive our token
+    Axios.post("https://eindwerk.jnnck.be/oauth/token", {
+      grant_type: "password",
+      client_id: 2,
+      client_secret: "iwrHFPcaiQ3bZTzHEwQpYkpiuHUlbIOJ9SAI6DLI",
+      username: values.email,
+      password: values.password,
+    })
+
+      // After reciving token, store it in localStorage to use it afterwords and we redirect ot the homepage
+      .then((response) => {
+        //checking data, remove later
+        console.log(response);
+
+        window.localStorage.setItem(
+          values.email + "_token",
+          response.data.access_token
+        );
+        this.props.history.push("/");
+      })
+      // In case we fail, we show our error in the login
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(values.email, values.password);
   };
 
   // Validating the values and displaying error message if missing
