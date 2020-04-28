@@ -15,7 +15,7 @@ class LoginForm extends Component {
             className="form-control"
             id="email"
             placeholder="email@example.com"
-            autofocus
+            autoFocus
             required
           />
           {/* shortening our code */}

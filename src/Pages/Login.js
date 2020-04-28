@@ -5,7 +5,7 @@ import Axios from "axios";
 
 class Login extends Component {
   onSubmit = (values) => {
-    // check to see if we get our values
+    // check to see if we get our values, remove console.log later
     // console.log(values);
 
     // posting our login data with our client data too the api too receive our token
