@@ -23,7 +23,7 @@ class Login extends Component {
         console.log(response);
 
         window.localStorage.setItem(
-          values.email + "_token",
+          "CarlEindwerk_token",
           response.data.access_token
         );
         this.props.history.push("/");

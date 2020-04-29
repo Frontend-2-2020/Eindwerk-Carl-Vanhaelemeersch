@@ -11,6 +11,7 @@ class App extends Component {
   render() {
     return (
       //Using react-router distribute our code into differents paths/pages on our site
+      // Add Spinner and Lazy to split up code
       <Router>
         <Link to="/">Home</Link>
         <Link to="/login">Login</Link>

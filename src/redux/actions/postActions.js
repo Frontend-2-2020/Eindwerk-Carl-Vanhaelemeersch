@@ -1,9 +1,2 @@
-const defaultState = [];
-const postActions = (state, action) => {
-  switch (action.type) {
-    // something
-    default:
-      return state;
-  }
-};
+const postActions = {};
 export default postActions;
