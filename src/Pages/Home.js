@@ -1,11 +1,24 @@
 import React, { Component } from "react";
 
+import Axios from "axios";
+import { connect } from "react-redux";
+import { getUser } from "../redux/actions/authActions";
+
 class Home extends Component {
+  componentDidMount() {
+    this.props.getUser();
+  }
   render() {
-    // Van hieruit onze Axios Call starten
-    
     return <div></div>;
   }
 }
 
-export default Home;
+// const mapStateToProps = (state) => {
+//   userData: state;
+// };
+
+const mapDispatchToProps = (dispatch) => ({
+  getUser: () => dispatch(getUser()),
+});
+
+export default connect(undefined, mapDispatchToProps)(Home);

@@ -1,5 +1,5 @@
-const defaultState = [];
-const postReducer = (state, action) => {
+const initialState = [];
+const postReducer = (state = initialState, action) => {
   switch (action.type) {
     // something
     default:

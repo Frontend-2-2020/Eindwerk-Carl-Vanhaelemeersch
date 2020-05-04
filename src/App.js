@@ -4,16 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Loader from "./Components/Loader";
 
 const Home = React.lazy(() => import("./Pages/Home"));
-const Login = React.lazy(() => import("./Pages/Register"));
-const Register = React.lazy(() => import("./Pages/User"));
-const User = React.lazy(() => import("./Pages/Detail"));
+const Login = React.lazy(() => import("./Pages/Login"));
+const Register = React.lazy(() => import("./Pages/Register"));
+const User = React.lazy(() => import("./Pages/User"));
 const Detail = React.lazy(() => import("./Pages/Detail"));
-
-// import Home from "./Pages/Home";
-// import Login from "./Pages/Login";
-// import Register from "./Pages/Register";
-// import User from "./Pages/User";
-// import Detail from "./Pages/Detail";
 
 class App extends Component {
   render() {

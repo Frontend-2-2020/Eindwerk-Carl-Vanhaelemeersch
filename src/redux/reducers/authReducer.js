@@ -1,6 +1,8 @@
-const authReducer = (state, action) => {
+const initialState = [];
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    // something
+    case "GET_USERS":
+      return action.payload;
     default:
       return state;
   }
