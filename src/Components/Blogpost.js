@@ -4,21 +4,20 @@ import Post from "./Post";
 class Blogpost extends Component {
   render() {
     const { posts } = this.props;
-    console.log("blogpost");
-    console.log(posts.data);
+    // console.log("blogpost");
+    // console.log(posts);
 
-    // if (posts.data === []) {
-    //   return <div>Er is iets fout gegaan</div>;
-    // } else {
-    //   return (
-    //     <div>
-    //       {posts.data.map((post) => (
-    //         <Post post={post} key={post.id} />
-    //       ))}
-    //     </div>
-    //   );
-    // }
-    return <div>WHYYYYYYYYYYYYY!!!!!</div>;
+    if (!posts) {
+      return <div>...Loading</div>;
+    } else {
+      return (
+        <div>
+          {posts.map((post) => (
+            <Post post={post} key={post.id} />
+          ))}
+        </div>
+      );
+    }
   }
 }
 
