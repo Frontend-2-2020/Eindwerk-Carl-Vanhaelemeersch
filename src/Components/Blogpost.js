@@ -7,18 +7,18 @@ class Blogpost extends Component {
     console.log("blogpost");
     console.log(posts.data);
 
-    if (posts.data === []) {
-      return <div>Er is iets fout gegaan</div>;
-    } else {
-      return (
-        <div>
-          {posts.data.map((post) => (
-            <Post post={post} key={post.id} />
-          ))}
-        </div>
-      );
-    }
-    // return <div>WHYYYYYYYYYYYYY!!!!!</div>;
+    // if (posts.data === []) {
+    //   return <div>Er is iets fout gegaan</div>;
+    // } else {
+    //   return (
+    //     <div>
+    //       {posts.data.map((post) => (
+    //         <Post post={post} key={post.id} />
+    //       ))}
+    //     </div>
+    //   );
+    // }
+    return <div>WHYYYYYYYYYYYYY!!!!!</div>;
   }
 }
 

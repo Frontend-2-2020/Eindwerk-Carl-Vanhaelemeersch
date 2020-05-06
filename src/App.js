@@ -1,5 +1,6 @@
 import React, { Component, Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Navbar, Nav, NavLink } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Loader from "./Components/Loader";
 
@@ -13,13 +14,31 @@ class App extends Component {
   render() {
     return (
       //Using react-router distribute our code into differents paths/pages on our site
-      // Add Spinner and Lazy to split up code
+      // Add custum Loader
+
       <Router>
-        <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
-        <Link to="/user">User</Link>
-        <Link to="/detail">Detail</Link>
+        <Navbar collapseOnSelect expand="lg" bg="dark">
+          <Navbar.Brand>
+            <Link to="/"> Placeholder Home</Link>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link>
+                <Link to="/login">Login</Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to="/register">Register</Link>
+              </Nav.Link>
+              <NavLink>
+                <Link to="/user">User</Link>
+              </NavLink>
+              <NavLink>
+                <Link to="/detail">Detail</Link>
+              </NavLink>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
         <Suspense fallback={<Loader />}>
           <Switch>
