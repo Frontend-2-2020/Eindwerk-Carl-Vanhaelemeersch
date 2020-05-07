@@ -11,7 +11,7 @@ class Blogpost extends Component {
       return <div>...Loading</div>;
     } else {
       return (
-        <div>
+        <div className="container">
           {posts.map((post) => (
             <Post post={post} key={post.id} />
           ))}

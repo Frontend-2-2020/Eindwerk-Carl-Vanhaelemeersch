@@ -5,10 +5,16 @@ class Post extends Component {
     const { post } = this.props;
     return (
       <div>
-        <div className="card mt-4" style={{ width: "18rem" }}>
+        <div className="card mt-4" style={{ width: "50%" }}>
           <div className="card-body">
-            <h5 className="card-title">{post.title}</h5>
-            <p className="card-text">{post.body}</p>
+            <h5
+              className="card-title"
+              dangerouslySetInnerHTML={{ __html: post.title }}
+            ></h5>
+            <p
+              className="card-text"
+              dangerouslySetInnerHTML={{ __html: post.body }}
+            ></p>
           </div>
           <h6 className="card-subtitle mb-2 ">
             Posted by:
