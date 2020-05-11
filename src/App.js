@@ -24,18 +24,18 @@ class App extends Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link>
-                <Link to="/login">Login</Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link to="/register">Register</Link>
-              </Nav.Link>
-              <NavLink>
-                <Link to="/user">User</Link>
-              </NavLink>
-              <NavLink>
-                <Link to="/detail">Detail</Link>
-              </NavLink>
+              <Link to="/login" className="nav-link">
+                Login
+              </Link>
+              <Link to="/register" className="nav-link">
+                Register
+              </Link>
+              <Link to="/user" className="nav-link">
+                User
+              </Link>
+              <Link to="/detail" className="nav-link">
+                Detail
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getUser } from "../redux/actions/authActions";
 import { getPosts } from "../redux/actions/postActions";
 import Blogpost from "../Components/Blogpost";
+import CreatePost from "../Components/CreatePost";
 
 class Home extends Component {
   componentDidMount() {
@@ -14,6 +15,7 @@ class Home extends Component {
     return (
       <div>
         <h1>Welkom terug {auth.first_name + " " + auth.last_name}</h1>
+        <CreatePost />
         <Blogpost posts={posts} />
       </div>
     );
