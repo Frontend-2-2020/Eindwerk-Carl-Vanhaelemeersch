@@ -1,16 +1,16 @@
 import React, { Component } from "react";
+import { withRouter, Link } from "react-router-dom";
 
 class Post extends Component {
   render() {
     const { post } = this.props;
+
     return (
       <div>
         <div className="card mt-4" style={{ width: "50%" }}>
           <div className="card-body">
-            <h5
-              className="card-title"
-              dangerouslySetInnerHTML={{ __html: post.title }}
-            ></h5>
+            <Link to={"/detail/" + post.id}>{post.title}</Link>
+
             <p
               className="card-text"
               dangerouslySetInnerHTML={{ __html: post.body }}
@@ -28,4 +28,4 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default withRouter(Post);

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Formik } from "formik";
 import API from "../libs/API";
 import CreatePostForm from "./CreatePostForm";
+import { withRouter } from "react-router";
 
 class CreatePost extends Component {
   onSubmit = (values) => {
@@ -12,6 +13,7 @@ class CreatePost extends Component {
     })
       .then((response) => {
         console.log(response);
+        this.props.history.push("/detail/" + response.data.id);
       })
       .catch((error) => {
         console.log(error);
@@ -52,4 +54,4 @@ class CreatePost extends Component {
   }
 }
 
-export default CreatePost;
+export default withRouter(CreatePost);

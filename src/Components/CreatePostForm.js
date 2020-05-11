@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Form, Field } from "formik";
 import CustomErrorMessage from "./CustomErrorMessage";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { ClassicEditor } from "@ckeditor/ckeditor5-build-classic";
+import CKEditor from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 class CreatePostForm extends Component {
   render() {
@@ -23,19 +23,7 @@ class CreatePostForm extends Component {
           />
           <CustomErrorMessage name="title" />
 
-          {/* <label htmlFor="body" className="mt-1">
-            Description
-          </label>
-          <Field
-            component="textarea"
-            name="body"
-            id="body"
-            placeholder="Let's get this started"
-            required
-            className="form-control"
-          /> */}
-
-          {/* <CKEditor
+          <CKEditor
             editor={ClassicEditor}
             data={values.body}
             onChange={(event, editor) => {
@@ -43,7 +31,7 @@ class CreatePostForm extends Component {
               setFieldValue("body", data);
             }}
           />
-          <CustomErrorMessage name="body" /> */}
+          <CustomErrorMessage name="body" />
 
           <button type="submit" className="btn btn-primary float-right mt-4">
             Submit

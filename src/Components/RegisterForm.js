@@ -74,18 +74,6 @@ class RegisterForm extends Component {
             />
             <CustomErrorMessage name="favorite_color" />
           </div>
-
-          {/* <div className="col-md-6">
-            <label htmlFor="avatar">Avatar</label>
-            <Field
-              type="file"
-              name="avatar"
-              id="avatar"
-              required
-              className="form-control"
-            />
-            <CustomErrorMessage name="avatar" />
-          </div> */}
         </div>
 
         <button type="submit" className="btn btn-primary float-right mt-4">
