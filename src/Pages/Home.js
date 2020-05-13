@@ -12,7 +12,7 @@ class Home extends Component {
   }
   render() {
     const { auth, posts } = this.props;
-    console.log(auth);
+    // console.log(auth);
     return (
       <div>
         <h1>Welkom terug {auth.first_name + " " + auth.last_name}</h1>

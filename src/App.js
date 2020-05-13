@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Navbar, Nav, NavLink } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Loader from "./Components/Loader";
 
@@ -33,9 +33,9 @@ class App extends Component {
               <Link to="/user" className="nav-link">
                 User
               </Link>
-              <Link to="/detail" className="nav-link">
+              {/* <Link to="/detail" className="nav-link">
                 Detail
-              </Link>
+              </Link> */}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
