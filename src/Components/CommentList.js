@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class CommentList extends Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { comment } = this.props;
     return (
       <div className="mt-4 border border-primary rounded p-4">

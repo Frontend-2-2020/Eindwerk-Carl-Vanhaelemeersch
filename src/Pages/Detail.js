@@ -3,6 +3,7 @@ import Axios from "axios";
 import { connect } from "react-redux";
 import CommentPost from "../Components/CommentPost";
 import CommentList from "../Components/CommentList";
+import API from "../libs/API";
 
 class Detail extends Component {
   state = {
@@ -10,9 +11,31 @@ class Detail extends Component {
     comments: {},
   };
   componentDidMount() {
-    Promise.all([this.getPostsByID(), getComments()]);
-    // this.getPostsByID();
+    // Promise.all([this.getPostsByID(), getComments()]);
+    this.getPostsByID();
   }
+
+  onSubmit = (values) => {
+    // console.log(values);
+    API.post("https://eindwerk.jnnck.be/api/comments", {
+      body: values.body,
+      blog_post_id: this.state.posts.id,
+    })
+      .then((response) => {
+        console.log(response);
+        // rerender our list with our previ function, but failing every time!!!
+        this.getPostsByID();
+        // getPostbyID();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    //Clearing form after making post
+
+    //doesn't work here!!!
+    document.getElementById("clearForm").reset();
+  };
 
   getPostsByID() {
     Axios.get(
@@ -51,7 +74,13 @@ class Detail extends Component {
           ))}
         </div>
         {/* still need to show comments */}
-        {this.props.auth.last_name && <CommentPost posts={posts} />}
+        {this.props.auth.last_name && (
+          <CommentPost
+            posts={posts}
+            getPostsByID={this.getPostsByID}
+            onSubmit={this.onSubmit}
+          />
+        )}
       </div>
     );
   }
@@ -60,14 +89,14 @@ const mapStateToProps = (state) => {
   return { auth: state.auth };
 };
 
-export function getComments() {
-  Axios.get("https://eindwerk.jnnck.be/api/comments")
-    .then((response) => {
-      this.setState({ comments: response.data });
-      // console.log(this.state);
-    })
-    .catch((Error) => {
-      console.log(Error);
-    });
-}
+// export function getComments() {
+//   Axios.get("https://eindwerk.jnnck.be/api/comments")
+//     .then((response) => {
+//       this.setState({ comments: response.data });
+//       // console.log(this.state);
+//     })
+//     .catch((Error) => {
+//       console.log(Error);
+//     });
+// }
 export default connect(mapStateToProps)(Detail);
