@@ -5,8 +5,8 @@ import Axios from "axios";
 
 class Register extends Component {
   // onsubmit posting our values to api/users then if succesfull, redirect to login page. If not, display errors in console
-  onSubmit = (values) => {
-    console.log(values);
+  onSubmit = (values, formikFunctions) => {
+    // console.log(values);
     Axios.post("https://eindwerk.jnnck.be/api/users", {
       first_name: values.first_name,
       last_name: values.last_name,
@@ -22,6 +22,9 @@ class Register extends Component {
       .catch((error) => {
         console.log(error);
       });
+
+    //resetting values form:
+    formikFunctions.resetForm();
   };
 
   // Validating the values and displaying error message if missing

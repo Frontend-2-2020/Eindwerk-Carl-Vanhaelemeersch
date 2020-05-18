@@ -5,7 +5,7 @@ import CreatePostForm from "./CreatePostForm";
 import { withRouter } from "react-router";
 
 class CreatePost extends Component {
-  onSubmit = (values) => {
+  onSubmit = (values, formikFunctions) => {
     console.log(values);
     API.post("https://eindwerk.jnnck.be/api/posts", {
       title: values.title,
@@ -20,7 +20,7 @@ class CreatePost extends Component {
       });
 
     //Clearing form after making post
-    document.getElementById("clearForm").reset();
+    formikFunctions.resetForm();
   };
 
   validate = (values) => {

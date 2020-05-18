@@ -5,26 +5,6 @@ import CommentPostForm from "./CommentPostForm";
 // import { getComments } from "../Pages/Detail";
 
 class CommentPost extends Component {
-  // onSubmit = (values) => {
-  //   // console.log(values);
-  //   API.post("https://eindwerk.jnnck.be/api/comments", {
-  //     body: values.body,
-  //     blog_post_id: this.props.posts.id,
-  //   })
-  //     .then((response) => {
-  //       console.log(response);
-  //       // rerender our list with our previ function, but failing every time!!!
-  //       // getPostbyID();
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-
-  //   //Clearing form after making post
-
-  //   //doesn't work here!!!
-  //   document.getElementById("clearForm").reset();
-  // };
 
   validate = (values) => {
     const errors = {};

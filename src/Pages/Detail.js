@@ -11,11 +11,10 @@ class Detail extends Component {
     comments: {},
   };
   componentDidMount() {
-    // Promise.all([this.getPostsByID(), getComments()]);
     this.getPostsByID();
   }
 
-  onSubmit = (values) => {
+  onSubmit = (values, formikFunctions) => {
     // console.log(values);
     API.post("https://eindwerk.jnnck.be/api/comments", {
       body: values.body,
@@ -25,19 +24,16 @@ class Detail extends Component {
         console.log(response);
         // rerender our list with our previ function, but failing every time!!!
         this.getPostsByID();
-        // getPostbyID();
       })
       .catch((error) => {
         console.log(error);
       });
 
     //Clearing form after making post
-
-    //doesn't work here!!!
-    document.getElementById("clearForm").reset();
+    formikFunctions.resetForm();
   };
 
-  getPostsByID() {
+  getPostsByID = () => {
     Axios.get(
       "https://eindwerk.jnnck.be/api/posts/" + this.props.match.params.id
     )
@@ -50,7 +46,18 @@ class Detail extends Component {
       .catch((Error) => {
         console.log(Error);
       });
-  }
+  };
+  removePostFromDetail = () => {
+    API.delete("https://eindwerk.jnnck.be/api/posts/" + this.state.posts.id)
+      .then((response) => {
+        console.log(response.data);
+        // this.props.getPosts();
+        this.props.history.push("/home");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   render() {
     const { posts } = this.state;
@@ -61,7 +68,17 @@ class Detail extends Component {
 
     return (
       <div className="container">
-        <div>IDnummer= {this.props.match.params.id}</div>
+        {this.state.posts.user.id === this.props.auth.id && (
+          <div>
+            <span className="badge badge-info">Edit</span>
+            <span
+              className="badge badge-danger"
+              onClick={this.removePostFromDetail}
+            >
+              Remove
+            </span>
+          </div>
+        )}
         <h1>{posts.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: posts.body }}></div>
         <p>
@@ -70,7 +87,11 @@ class Detail extends Component {
 
         <div className="container w-50">
           {this.state.posts.comments.map((comment) => (
-            <CommentList comment={comment} key={comment.id} />
+            <CommentList
+              comment={comment}
+              getPostsByID={this.getPostsByID}
+              key={comment.id}
+            />
           ))}
         </div>
         {/* still need to show comments */}
@@ -89,14 +110,4 @@ const mapStateToProps = (state) => {
   return { auth: state.auth };
 };
 
-// export function getComments() {
-//   Axios.get("https://eindwerk.jnnck.be/api/comments")
-//     .then((response) => {
-//       this.setState({ comments: response.data });
-//       // console.log(this.state);
-//     })
-//     .catch((Error) => {
-//       console.log(Error);
-//     });
-// }
 export default connect(mapStateToProps)(Detail);

@@ -5,7 +5,6 @@ class Blogpost extends Component {
   render() {
     const { posts } = this.props;
     // console.log("blogpost");
-    // console.log(posts);
 
     if (!posts) {
       return <div>...Loading</div>;

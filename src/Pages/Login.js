@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import { Formik } from "formik";
 import LoginForm from "../Components/LoginForm";
 import API from "../libs/API";
+import { getUser } from "../redux/actions/authActions";
+import { connect } from "react-redux";
 
 class Login extends Component {
-  onSubmit = (values) => {
+  onSubmit = (values, formikFunctions) => {
     // check to see if we get our values, remove console.log later
     // console.log(values);
 
@@ -28,6 +30,7 @@ class Login extends Component {
         );
         API.defaults.headers.common["Authorization"] =
           "Bearer " + response.data.access_token;
+        this.props.getUser();
         this.props.history.push("/");
       })
       // In case we fail, we show our error in the login
@@ -35,6 +38,7 @@ class Login extends Component {
         console.log(error);
       });
     // console.log(values.email, values.password);
+    formikFunctions.resetForm();
   };
 
   // Validating the values and displaying error message if missing
@@ -69,4 +73,8 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  getUser: () => dispatch(getUser()),
+});
+
+export default connect(undefined, mapDispatchToProps)(Login);

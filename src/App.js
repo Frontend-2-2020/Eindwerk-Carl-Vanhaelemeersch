@@ -3,14 +3,21 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Loader from "./Components/Loader";
+import { connect } from "react-redux";
+import { getUser } from "./redux/actions/authActions";
 
 const Home = React.lazy(() => import("./Pages/Home"));
 const Login = React.lazy(() => import("./Pages/Login"));
 const Register = React.lazy(() => import("./Pages/Register"));
 const User = React.lazy(() => import("./Pages/User"));
 const Detail = React.lazy(() => import("./Pages/Detail"));
+const EditComment = React.lazy(() => import("./Pages/EditComment"));
+const EditPost = React.lazy(() => import("./Pages/EditPost"));
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getUser();
+  }
   render() {
     return (
       //Using react-router distribute our code into differents paths/pages on our site
@@ -33,9 +40,6 @@ class App extends Component {
               <Link to="/user" className="nav-link">
                 User
               </Link>
-              {/* <Link to="/detail" className="nav-link">
-                Detail
-              </Link> */}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -46,6 +50,8 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/user" component={User} />
             <Route path="/detail/:id" component={Detail} />
+            <Route path="editComment:id" component={EditComment} />
+            <Route path="editPost:id" component={EditPost} />
             <Route path="/" component={Home} />
           </Switch>
         </Suspense>
@@ -53,9 +59,9 @@ class App extends Component {
     );
   }
 }
-// TODO:::
-//TouchUp Register Form
-//Documentatie
-//Details: Strong Password, Emailvalidator zoal gezien in de les
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  getUser: () => dispatch(getUser()),
+});
+
+export default connect(undefined, mapDispatchToProps)(App);

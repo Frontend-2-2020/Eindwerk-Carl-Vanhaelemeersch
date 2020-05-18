@@ -1,25 +1,32 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getUser } from "../redux/actions/authActions";
+// import { getUser } from "../redux/actions/authActions";
 import { getPosts } from "../redux/actions/postActions";
 import Blogpost from "../Components/Blogpost";
 import CreatePost from "../Components/CreatePost";
 
 class Home extends Component {
   componentDidMount() {
-    this.props.getUser();
+    // this.props.getUser();
     this.props.getPosts();
   }
   render() {
     const { auth, posts } = this.props;
-    // console.log(auth);
-    return (
-      <div>
-        <h1>Welkom terug {auth.first_name + " " + auth.last_name}</h1>
-        <CreatePost />
-        <Blogpost posts={posts} />
-      </div>
-    );
+
+    if (!auth) {
+      return <div>...Loading/</div>;
+    } else {
+      return (
+        <div>
+          {this.props.auth.last_name && (
+            <h1>Welkom terug {auth.first_name + " " + auth.last_name}</h1>
+          )}
+          {this.props.auth.last_name && <CreatePost />}
+
+          <Blogpost posts={posts} auth={auth} />
+        </div>
+      );
+    }
   }
 }
 
@@ -28,7 +35,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getUser: () => dispatch(getUser()),
   getPosts: () => dispatch(getPosts()),
 });
 

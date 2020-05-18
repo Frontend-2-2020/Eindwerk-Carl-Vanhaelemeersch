@@ -1,30 +1,12 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
-import { connect } from "react-redux";
-import API from "../libs/API";
-import { getPosts } from "../redux/actions/postActions";
 
-class Post extends Component {
-  removePost = () => {
-    API.delete("https://eindwerk.jnnck.be/api/posts/" + this.props.post.id)
-      .then((response) => {
-        console.log(response.data);
-        this.props.getPosts();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+class EditPost extends Component {
   render() {
-    const { post, auth } = this.props;
-    // console.log(auth);
-
     return (
       <div>
         <div className="card mt-4" style={{ width: "50%" }}>
           <div className="card-body">
-            <Link to={"/detail/" + post.id}>{post.title}</Link>
-
+            <h1>{post.title}</h1>
             <p
               className="card-text"
               dangerouslySetInnerHTML={{ __html: post.body }}
@@ -49,12 +31,5 @@ class Post extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {
-  return { auth: state.auth };
-};
 
-const mapDispatchToProps = (dispatch) => ({
-  getPosts: () => dispatch(getPosts()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Post));
+export default EditPost;
