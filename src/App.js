@@ -40,9 +40,6 @@ class App extends Component {
               <Link to="/user" className="nav-link">
                 User
               </Link>
-              {/* <Link to="/editPost" className="nav-link">
-                editPost
-              </Link> */}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -53,8 +50,8 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/user" component={User} />
             <Route path="/detail/:id" component={Detail} />
-            <Route path="editComment:id" component={EditComment} />
-            <Route path="editPost:id" component={EditPost} />
+            <Route path="/editComment:id" component={EditComment} />
+            <Route path="/editPost:id" component={EditPost} />
             <Route path="/" component={Home} />
           </Switch>
         </Suspense>

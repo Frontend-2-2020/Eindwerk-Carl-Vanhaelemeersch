@@ -11,14 +11,21 @@ class EditPost extends Component {
   };
 
   componentDidMount() {
-    const id = this.props.match.params.id;
-    Axios.get("https://eindwerk.jnnck.be/api/posts/" + id).then((response) => {
-      this.setState({
-        post: response.data,
-      });
-    });
-    console.log(this.post);
+    this.getPostsByID();
   }
+  getPostsByID = () => {
+    const id = this.props.match.params.id;
+    Axios.get("https://eindwerk.jnnck.be/api/posts/" + id)
+      .then((response) => {
+        // console.log(response);
+
+        this.setState({ posts: response.data });
+        // console.log(this.state);
+      })
+      .catch((Error) => {
+        console.log(Error);
+      });
+  };
 
   onSubmit = (values, formikFunctions) => {
     console.log(values);
@@ -28,7 +35,6 @@ class EditPost extends Component {
     })
       .then((response) => {
         console.log(response);
-        // this.props.history.push("/detail/" + response.data.id);
         this.props.history.push("/home");
       })
       .catch((error) => {
@@ -55,7 +61,7 @@ class EditPost extends Component {
   render() {
     const { post } = this.state;
 
-    if (!post) {
+    if (!post.title) {
       return "Loading...";
     }
     return (

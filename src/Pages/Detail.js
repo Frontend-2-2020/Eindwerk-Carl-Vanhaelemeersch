@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import CommentPost from "../Components/CommentPost";
 import CommentList from "../Components/CommentList";
 import API from "../libs/API";
+import { Link } from "react-router-dom";
 
 class Detail extends Component {
   state = {
@@ -69,7 +70,9 @@ class Detail extends Component {
       <div className="container">
         {this.state.posts.user.id === this.props.auth.id && (
           <div>
-            <span className="badge badge-info">Edit</span>
+            <Link to={"/editPost/" + posts.id}>
+              <span className="badge badge-info">Edit</span>
+            </Link>
             <span
               className="badge badge-danger"
               onClick={this.removePostFromDetail}
