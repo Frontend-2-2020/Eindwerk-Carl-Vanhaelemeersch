@@ -15,6 +15,9 @@ class Post extends Component {
         console.log(error);
       });
   };
+  // updatePost(id) {
+  //   this.props.history.push("/addPost/" + id);
+  // }
   render() {
     const { post, auth } = this.props;
     // console.log(auth);
@@ -38,7 +41,10 @@ class Post extends Component {
           </h6>
           {post.user.id === auth.id && (
             <div>
-              <span className="badge badge-info">Edit</span>
+              <Link to={"/editPost/" + post.id}>
+                <span className="badge badge-info">Edit</span>
+              </Link>
+
               <span className="badge badge-danger" onClick={this.removePost}>
                 Remove
               </span>

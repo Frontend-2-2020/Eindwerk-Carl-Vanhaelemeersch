@@ -40,6 +40,9 @@ class App extends Component {
               <Link to="/user" className="nav-link">
                 User
               </Link>
+              {/* <Link to="/editPost" className="nav-link">
+                editPost
+              </Link> */}
             </Nav>
           </Navbar.Collapse>
         </Navbar>

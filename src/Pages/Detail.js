@@ -34,9 +34,8 @@ class Detail extends Component {
   };
 
   getPostsByID = () => {
-    Axios.get(
-      "https://eindwerk.jnnck.be/api/posts/" + this.props.match.params.id
-    )
+    const id = this.props.match.params.id;
+    Axios.get("https://eindwerk.jnnck.be/api/posts/" + id)
       .then((response) => {
         // console.log(response);
 
