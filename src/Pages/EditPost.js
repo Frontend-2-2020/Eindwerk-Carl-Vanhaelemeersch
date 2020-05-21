@@ -19,7 +19,7 @@ class EditPost extends Component {
       .then((response) => {
         // console.log(response);
 
-        this.setState({ posts: response.data });
+        this.setState({ post: response.data });
         // console.log(this.state);
       })
       .catch((Error) => {
