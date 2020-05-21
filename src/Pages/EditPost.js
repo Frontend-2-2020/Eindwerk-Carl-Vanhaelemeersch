@@ -17,10 +17,9 @@ class EditPost extends Component {
     const id = this.props.match.params.id;
     Axios.get("https://eindwerk.jnnck.be/api/posts/" + id)
       .then((response) => {
-        // console.log(response);
-
         this.setState({ post: response.data });
-        // console.log(this.state);
+        console.log("getPostsbyID");
+        console.log(this.state.post);
       })
       .catch((Error) => {
         console.log(Error);
@@ -29,12 +28,14 @@ class EditPost extends Component {
 
   onSubmit = (values, formikFunctions) => {
     console.log(values);
-    API.put("https://eindwerk.jnnck.be/api/posts", {
+    const id = this.props.match.params.id;
+    API.put("https://eindwerk.jnnck.be/api/posts/" + id, {
       title: values.title,
       body: values.body,
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
+        this.getPostsByID();
         this.props.history.push("/home");
       })
       .catch((error) => {
@@ -68,7 +69,7 @@ class EditPost extends Component {
       <div className="container m-5" id="createPost">
         <Formik
           onSubmit={this.onSubmit}
-          // Making sure that the register form is always empty at the start
+          // Making sure that the values are there to edit
           initialValues={{
             title: post.title,
             body: post.body,

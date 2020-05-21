@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import API from "../libs/API";
 import { getPosts } from "../redux/actions/postActions";
+import { Link } from "react-router-dom";
 
 class CommentList extends Component {
   removeComment = () => {
@@ -29,7 +30,9 @@ class CommentList extends Component {
         </div>
         {comment.user.id === auth.id && (
           <div>
-            <span className="badge badge-info">Edit</span>
+            <Link to={"/editComment/" + comment.id}>
+              <span className="badge badge-info">Edit</span>
+            </Link>
             <span className="badge badge-danger" onClick={this.removeComment}>
               Remove
             </span>
