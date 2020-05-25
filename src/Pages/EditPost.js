@@ -43,7 +43,7 @@ class EditPost extends Component {
       });
 
     //Clearing form after making post
-    formikFunctions.resetForm();
+    // formikFunctions.resetForm();
   };
 
   validate = (values) => {

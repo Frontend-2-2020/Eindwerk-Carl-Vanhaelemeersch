@@ -35,9 +35,11 @@ class Post extends Component {
           </div>
           <h6 className="card-subtitle mb-2 ">
             Posted by:
-            <span className="text-muted">
-              {post.user.first_name + "" + post.user.last_name}
-            </span>
+            <Link to={"/user/" + post.user.id}>
+              <span className="text-muted">
+                {post.user.first_name + "" + post.user.last_name}
+              </span>
+            </Link>
           </h6>
           {post.user.id === auth.id && (
             <div>

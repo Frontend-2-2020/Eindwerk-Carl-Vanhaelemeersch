@@ -13,6 +13,7 @@ const User = React.lazy(() => import("./Pages/User"));
 const Detail = React.lazy(() => import("./Pages/Detail"));
 const EditComment = React.lazy(() => import("./Pages/EditComment"));
 const EditPost = React.lazy(() => import("./Pages/EditPost"));
+const EditUser = React.lazy(() => import("./Pages/EditUser"));
 
 class App extends Component {
   componentDidMount() {
@@ -48,7 +49,8 @@ class App extends Component {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/user" component={User} />
+            <Route path="/user/:id" component={User} />
+            <Route path="/editUser/:id" component={EditUser} />
             <Route path="/detail/:id" component={Detail} />
             <Route path="/editComment/:id" component={EditComment} />
             <Route path="/editPost/:id" component={EditPost} />

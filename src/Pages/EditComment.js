@@ -28,21 +28,21 @@ class EditComment extends Component {
   onSubmit = (values, formikFunctions) => {
     // console.log(values);
     const id = this.props.match.params.id;
+    const { comment } = this.state;
     API.put("https://eindwerk.jnnck.be/api/comments/" + id, {
       body: values.body,
     })
       .then((response) => {
-        console.log(response);
-        // rerender our list
-        this.getCommentsByID();
-        this.props.history.push("/home");
+        // console.log(response);
+
+        this.props.history.push("/detail/" + comment.blog_post_id);
       })
       .catch((error) => {
         console.log(error);
       });
 
     //Clearing form after making post
-    formikFunctions.resetForm();
+    // formikFunctions.resetForm();
   };
 
   validate = (values) => {
