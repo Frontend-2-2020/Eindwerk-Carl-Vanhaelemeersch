@@ -39,14 +39,22 @@ class User extends Component {
         <div>
           <h3>Geposte Artikelen: </h3>
           {user.blog_posts.map((posts) => (
-            <UserPostList posts={posts} key={posts.id} />
+            <UserPostList
+              posts={posts}
+              getUsersByID={this.getUsersByID}
+              key={posts.id}
+            />
           ))}
         </div>
 
         <div className="container">
           <h3>Geposte Comments: </h3>
           {user.comments.map((comment) => (
-            <UserCommentList comment={comment} key={comment.id} />
+            <UserCommentList
+              comment={comment}
+              getUsersByID={this.getUsersByID}
+              key={comment.id}
+            />
           ))}
         </div>
       </div>
