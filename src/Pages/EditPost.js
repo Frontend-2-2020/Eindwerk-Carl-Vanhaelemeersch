@@ -66,7 +66,7 @@ class EditPost extends Component {
       return "Loading...";
     }
     return (
-      <div className="container m-5" id="createPost">
+      <div className="container m-5" id="editPost">
         <Formik
           onSubmit={this.onSubmit}
           // Making sure that the values are there to edit

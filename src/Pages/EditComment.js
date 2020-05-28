@@ -64,7 +64,7 @@ class EditComment extends Component {
       return "Loading...";
     }
     return (
-      <div className="container m-5" id="commentPost">
+      <div className="container m-5" id="editComment">
         <Formik
           onSubmit={this.onSubmit}
           // Making sure that the values are there to edit

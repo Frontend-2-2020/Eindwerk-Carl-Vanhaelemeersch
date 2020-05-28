@@ -13,6 +13,9 @@ class Detail extends Component {
   };
   componentDidMount() {
     this.getPostsByID();
+    setInterval(() => {
+      this.getPostsByID();
+    }, 5000);
   }
 
   onSubmit = (values, formikFunctions) => {
@@ -48,10 +51,10 @@ class Detail extends Component {
       });
   };
   removePostFromDetail = () => {
-    API.delete("https://eindwerk.jnnck.be/api/posts/" + this.state.posts.id)
+    const { posts } = this.state;
+    API.delete("https://eindwerk.jnnck.be/api/posts/" + posts.id)
       .then((response) => {
         console.log(response.data);
-        // this.props.getPosts();
         this.props.history.push("/home");
       })
       .catch((error) => {

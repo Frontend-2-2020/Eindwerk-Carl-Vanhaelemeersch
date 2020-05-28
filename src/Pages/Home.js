@@ -1,15 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { getUser } from "../redux/actions/authActions";
-import { getPosts } from "../redux/actions/postActions";
+import Pagination from "rc-pagination";
+import "rc-pagination/assets/index.css";
+import { getPosts, getPage } from "../redux/actions/postActions";
 import Blogpost from "../Components/Blogpost";
 import CreatePost from "../Components/CreatePost";
 
 class Home extends Component {
   componentDidMount() {
-    // this.props.getUser();
     this.props.getPosts();
+    // this.props.getPage();
+    setInterval(() => {
+      this.props.getPosts();
+    }, 25000);
   }
+
+  // onChange = (pageNumber) => {
+  //   this.props.getPosts(pageNumber);
+  // };
+
   render() {
     const { auth, posts } = this.props;
 
@@ -24,6 +33,12 @@ class Home extends Component {
           {this.props.auth.last_name && <CreatePost />}
 
           <Blogpost posts={posts} auth={auth} />
+
+          {/* <Pagination
+            onChange={this.onChange}
+            page={this.props.current_page}
+            total={this.props.last_page}
+          /> */}
         </div>
       );
     }
@@ -35,6 +50,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  // getPage: (pagenumber) => dispatch(getPage(pagenumber)),
   getPosts: () => dispatch(getPosts()),
 });
 

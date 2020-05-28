@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class UserPage extends Component {
   render() {
-    const { user } = this.props;
+    const { user, auth } = this.props;
     return (
       <div>
         <div>
@@ -28,6 +30,11 @@ class UserPage extends Component {
               <span className="font-weight-bold">Laats ingelogd: </span>
               {user.last_login_at}
             </div>
+            {user.id === auth.id && (
+              <Link to={"/editUser/" + user.id}>
+                <button className="btn btn-primary btn-lg">Edit</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
@@ -35,4 +42,8 @@ class UserPage extends Component {
   }
 }
 
-export default UserPage;
+const mapStateToProps = (state) => {
+  return { auth: state.auth };
+};
+
+export default connect(mapStateToProps)(UserPage);
