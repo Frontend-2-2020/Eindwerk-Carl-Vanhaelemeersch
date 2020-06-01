@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Loader from "./Components/Loader";
 import { connect } from "react-redux";
 import { getUser } from "./redux/actions/authActions";
+import LoginLogoutBtn from "./Components/LoginLogoutBtn";
 
 const Home = React.lazy(() => import("./Pages/Home"));
 const Login = React.lazy(() => import("./Pages/Login"));
@@ -19,7 +20,9 @@ class App extends Component {
   componentDidMount() {
     this.props.getUser();
   }
+
   render() {
+    console.log(this.props.auth);
     return (
       //Using react-router distribute our code into differents paths/pages on our site
       // Add custum Loader
@@ -32,9 +35,8 @@ class App extends Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Link to="/login" className="nav-link">
-                Login
-              </Link>
+              <LoginLogoutBtn />
+
               <Link to="/register" className="nav-link">
                 Register
               </Link>

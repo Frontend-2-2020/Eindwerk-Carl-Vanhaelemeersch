@@ -55,7 +55,7 @@ class Detail extends Component {
     API.delete("https://eindwerk.jnnck.be/api/posts/" + posts.id)
       .then((response) => {
         console.log(response.data);
-        this.props.history.push("/home");
+        this.props.history.push("/");
       })
       .catch((error) => {
         console.log(error);

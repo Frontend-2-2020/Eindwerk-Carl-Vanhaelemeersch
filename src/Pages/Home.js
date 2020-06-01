@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Pagination from "rc-pagination";
 import "rc-pagination/assets/index.css";
 import { getPosts } from "../redux/actions/postActions";
 import Blogpost from "../Components/Blogpost";
 import CreatePost from "../Components/CreatePost";
+import Pagination from "rc-pagination";
 
 class Home extends Component {
   componentDidMount() {
     this.props.getPosts();
-    // this.props.getPage();
     setInterval(() => {
       this.props.getPosts();
     }, 25000);
@@ -20,9 +19,9 @@ class Home extends Component {
   };
 
   render() {
-    const { auth, posts, current_page, last_page } = this.props;
+    const { auth, posts, current_page, total_items, per_page } = this.props;
 
-    if (!auth && !last_page) {
+    if (!auth || !total_items) {
       return <div>...Loading/</div>;
     } else {
       return (
@@ -32,14 +31,15 @@ class Home extends Component {
           )}
           {this.props.auth.last_name && <CreatePost />}
 
-          {console.log(current_page, last_page)}
+          {console.log(current_page, total_items, per_page)}
 
-          <Blogpost posts={posts} auth={auth} />
+          <Blogpost posts={posts} />
 
           <Pagination
             onChange={this.onChange}
             page={current_page}
-            total={last_page}
+            total={total_items}
+            pageSize={per_page}
           />
         </div>
       );
@@ -52,12 +52,12 @@ const mapStateToProps = (state) => {
     auth: state.auth,
     posts: state.posts.allPosts,
     current_page: state.posts.current_page,
-    last_page: state.posts.last_page,
+    total_items: state.posts.total_items,
+    per_page: state.posts.per_page,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  // getPage: (pagenumber) => dispatch(getPage(pagenumber)),
   getPosts: (page) => dispatch(getPosts(page)),
 });
 

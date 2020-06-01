@@ -5,7 +5,8 @@ const postReducer = (state = initialState, action) => {
       return {
         allPosts: action.payload.data,
         current_page: action.payload.current_page,
-        last_page: action.payload.last_page,
+        total_items: action.payload.total,
+        per_page: action.payload.per_page,
       };
     default:
       return state;

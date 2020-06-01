@@ -36,7 +36,7 @@ class EditPost extends Component {
       .then((response) => {
         // console.log(response);
         this.getPostsByID();
-        this.props.history.push("/home");
+        this.props.history.push("/");
       })
       .catch((error) => {
         console.log(error);
