@@ -5,27 +5,24 @@ import CreatePostForm from "./CreatePostForm";
 import { withRouter } from "react-router";
 
 class CreatePost extends Component {
+  // ONSUBMIT: POST OUR VALES TO POSTS, THEN GO TO THAT POST AND RESET FORM (DISPLAY ERROR IF ANY).
   onSubmit = (values, formikFunctions) => {
-    console.log(values);
     API.post("https://eindwerk.jnnck.be/api/posts", {
       title: values.title,
       body: values.body,
     })
       .then((response) => {
-        console.log(response);
         this.props.history.push("/detail/" + response.data.id);
       })
       .catch((error) => {
         console.log(error);
       });
-
-    //Clearing form after making post
     formikFunctions.resetForm();
   };
 
+  // VALIDATE OUR VALUES BY RETURNING ERRORS IF ANY.
   validate = (values) => {
     const errors = {};
-
     const requiredFields = ["title", "body"];
 
     requiredFields.forEach((field) => {
@@ -35,12 +32,13 @@ class CreatePost extends Component {
     });
     return errors;
   };
+
+  // INIT VALUES ALWAY EMPTY TO START. SEPERATE FORM FOR SHORTER CODE
   render() {
     return (
       <div className="container m-5" id="createPost">
         <Formik
           onSubmit={this.onSubmit}
-          // Making sure that the register form is always empty at the start
           initialValues={{
             title: "",
             body: "",

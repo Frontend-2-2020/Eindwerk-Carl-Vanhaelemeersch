@@ -4,7 +4,7 @@ import CustomErrorMessage from "./CustomErrorMessage";
 
 class LoginForm extends Component {
   render() {
-    // The Display of our form
+    // DISPLAY OF OUR FORM WITH CUSTOMERRORMESSAGE TO LOGIN
     return (
       <Form className="container">
         <div className="form-group mt-4">
@@ -18,7 +18,6 @@ class LoginForm extends Component {
             autoFocus
             required
           />
-          {/* shortening our code */}
           <CustomErrorMessage name="email" />
         </div>
 
@@ -34,13 +33,6 @@ class LoginForm extends Component {
           />
           <CustomErrorMessage name="password" />
         </div>
-
-        {/* <div class="form-check mt-4">
-          <Field type="checkbox" class="form-check-input" id="dropdownCheck2" />
-          <label class="form-check-label" htmlFor="dropdownCheck2">
-            Remember me
-          </label>
-        </div> */}
 
         <div className="form-check mt-4"></div>
         <button type="submit" className="btn btn-block btn-primary">

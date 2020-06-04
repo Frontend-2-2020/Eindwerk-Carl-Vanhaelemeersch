@@ -2,20 +2,23 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../libs/API";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class UserCommentList extends Component {
-  removePost = () => {
-    API.delete(
-      "https://eindwerk.jnnck.be/api/comments/" + this.props.comment.id
-    )
+  // REMOVEPOST ON CORRECT COMMENT, THEN GETUSERSBYID (DISPLAY ERRORS IF ANY)
+  removeComment = () => {
+    const { getUsersByID, comment } = this.props;
+    API.delete("https://eindwerk.jnnck.be/api/comments/" + comment.id)
       .then((response) => {
-        console.log(response.data);
-        this.props.getUsersByID();
+        getUsersByID();
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  // DISPLAY OUR COMMENTLIST AS WRITTEN IN CODEDITOR,
+  // AND IF LOGGED IN ID = COMMENT USER ID, OPTION TO EDIT AND REMOVE COMMENT
   render() {
     const { comment, auth } = this.props;
     return (
@@ -28,7 +31,7 @@ class UserCommentList extends Component {
             <Link to={"/editComment/" + comment.id}>
               <span className="badge badge-info mb-4">Edit</span>
             </Link>
-            <span className="badge badge-danger" onClick={this.removePost}>
+            <span className="badge badge-danger" onClick={this.removeComment}>
               Remove
             </span>
           </div>
@@ -37,6 +40,14 @@ class UserCommentList extends Component {
     );
   }
 }
+UserCommentList.propTypes = {
+  comment: PropTypes.shape({
+    id: PropTypes.number,
+    blog_post_id: PropTypes.number,
+    body: PropTypes.string,
+  }).isRequired,
+  auth: PropTypes.object.isRequired,
+};
 const mapStateToProps = (state) => {
   return { auth: state.auth };
 };

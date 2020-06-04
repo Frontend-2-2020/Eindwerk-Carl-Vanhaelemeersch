@@ -44,7 +44,14 @@ class CommentList extends Component {
 }
 CommentList.propTypes = {
   getPostsByID: PropTypes.func.isRequired,
-  comment: PropTypes.object.isRequired,
+  comment: PropTypes.shape({
+    body: PropTypes.string,
+    user: PropTypes.shape({
+      id: PropTypes.number,
+      first_name: PropTypes.string,
+      last_name: PropTypes.string,
+    }),
+  }).isRequired,
   auth: PropTypes.object.isRequired,
 };
 

@@ -1,27 +1,27 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import API from "../libs/API";
 import { getPosts } from "../redux/actions/postActions";
+import PropTypes from "prop-types";
 
 class Post extends Component {
+  // WHEN REMOVEPOST: DELETE CORRECT POST, THEN GETPOSTS AGAIN (DISPLAY ERROR IF ANY)
   removePost = () => {
-    API.delete("https://eindwerk.jnnck.be/api/posts/" + this.props.post.id)
+    const { post, getPosts } = this.props;
+    API.delete("https://eindwerk.jnnck.be/api/posts/" + post.id)
       .then((response) => {
-        console.log(response.data);
-        this.props.getPosts();
+        getPosts();
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  // updatePost(id) {
-  //   this.props.history.push("/addPost/" + id);
-  // }
+
   render() {
     const { post, auth } = this.props;
-    // console.log(auth);
 
+    // DISPLAY OF OUR POST AND IF LOGGED IN ID = POST USER ID, OPTION TO EDIT OR REMOVE POST
     return (
       <div>
         <div className="card mt-4" style={{ width: "50%" }}>
@@ -57,12 +57,24 @@ class Post extends Component {
     );
   }
 }
+Post.propTypes = {
+  post: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    body: PropTypes.string,
+    user: PropTypes.shape({
+      id: PropTypes.number,
+      first_name: PropTypes.string,
+      last_name: PropTypes.string,
+    }),
+  }).isRequired,
+  auth: PropTypes.object.isRequired,
+};
 const mapStateToProps = (state) => {
   return { auth: state.auth };
 };
-
 const mapDispatchToProps = (dispatch) => ({
   getPosts: () => dispatch(getPosts()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Post));
+export default connect(mapStateToProps, mapDispatchToProps)(Post);
