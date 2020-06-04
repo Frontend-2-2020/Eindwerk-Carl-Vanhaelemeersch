@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class UserPage extends Component {
+  // DISPLAY OF OUR USER PAGE
   render() {
     const { user, auth } = this.props;
     return (
@@ -41,6 +43,10 @@ class UserPage extends Component {
     );
   }
 }
+UserPage.propTypes = {
+  user: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = (state) => {
   return { auth: state.auth };

@@ -3,8 +3,10 @@ import Axios from "axios";
 import UserPage from "../Components/UserPage";
 import UserPostList from "../Components/UserPostList";
 import UserCommentList from "../Components/UserCommentList";
+import Loader from "../Components/Loader";
 
 class User extends Component {
+  // DECLARE STATE
   state = {
     user: {},
   };
@@ -13,12 +15,12 @@ class User extends Component {
     this.getUsersByID();
   }
 
+  // GET CORRECT USER, SETSTATE USER (DISPLAY ERROR IF ANY)
   getUsersByID = () => {
     const id = this.props.match.params.id;
     Axios.get("https://eindwerk.jnnck.be/api/users/" + id)
       .then((response) => {
         this.setState({ user: response.data });
-        console.log(response.data);
       })
       .catch((Error) => {
         console.log(Error);
@@ -28,14 +30,15 @@ class User extends Component {
   render() {
     const { user } = this.state;
 
+    // IF NO USER, DISPLAY LOADER
     if (!user.first_name) {
-      return <div>...Loading</div>;
+      return <Loader />;
     }
 
+    // DISPLAY USER INFO WITH ALL POSTED COMMENTS AND POSTS
     return (
       <div className="container">
         <UserPage user={user} />
-
         <div>
           <h3>Geposte Artikelen: </h3>
           {user.blog_posts.map((posts) => (

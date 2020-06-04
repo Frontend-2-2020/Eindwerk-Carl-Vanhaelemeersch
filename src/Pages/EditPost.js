@@ -4,51 +4,50 @@ import { Formik } from "formik";
 import CreatePostForm from "../Components/CreatePostForm";
 import API from "../libs/API";
 import { withRouter } from "react-router-dom";
+import Loader from "../Components/Loader";
 
 class EditPost extends Component {
+  // WORKING WITH REDUX AND STATE FOR SIMPLER USE AND COMPREHENSION.
   state = {
     post: {},
   };
 
+  // GET CORRECT POST
   componentDidMount() {
     this.getPostsByID();
   }
+  // GET CORRECT POST TO CHANGE, PUT IN STATE (DISPLAY ERROR IF ANY)
   getPostsByID = () => {
     const id = this.props.match.params.id;
     Axios.get("https://eindwerk.jnnck.be/api/posts/" + id)
       .then((response) => {
         this.setState({ post: response.data });
-        console.log("getPostsbyID");
-        console.log(this.state.post);
       })
       .catch((Error) => {
         console.log(Error);
       });
   };
 
-  onSubmit = (values, formikFunctions) => {
-    console.log(values);
+  // ONSUBMIT, PUT ADJUSTED VALUES IN CORRECT POST, GETTING POSTS AGAIN,
+  // THEN REDIRECT TO CORRECT POST (DISPLAY ERROR IF ANY)
+  onSubmit = (values) => {
     const id = this.props.match.params.id;
     API.put("https://eindwerk.jnnck.be/api/posts/" + id, {
       title: values.title,
       body: values.body,
     })
       .then((response) => {
-        // console.log(response);
         this.getPostsByID();
         this.props.history.push("/");
       })
       .catch((error) => {
         console.log(error);
       });
-
-    //Clearing form after making post
-    // formikFunctions.resetForm();
   };
 
+  // VALIDATE OUR VALUES AND DISPLAY ERROR WHEN NEEDED
   validate = (values) => {
     const errors = {};
-
     const requiredFields = ["title", "body"];
 
     requiredFields.forEach((field) => {
@@ -62,9 +61,11 @@ class EditPost extends Component {
   render() {
     const { post } = this.state;
 
+    // WHEN NO POST, DISPLAY LOADING
     if (!post.title) {
-      return "Loading...";
+      return <Loader />;
     }
+    // SEPERATE FORM FOR SHORTER AND CLEARED CODE, WITH OUR INITVALUES OUR VALUES FROM THE GETPOSTSSBYID
     return (
       <div className="container m-5" id="editPost">
         <Formik
@@ -82,5 +83,4 @@ class EditPost extends Component {
     );
   }
 }
-
 export default withRouter(EditPost);

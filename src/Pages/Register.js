@@ -4,9 +4,9 @@ import RegisterForm from "../Components/RegisterForm";
 import Axios from "axios";
 
 class Register extends Component {
-  // onsubmit posting our values to api/users then if succesfull, redirect to login page. If not, display errors in console
+  // POSTING VALUES TO API/USERS THEN IF SUCCESFULL? REDIRECT TO LOGIN PAGE,
+  // IF NOT, DISPLAY ERRORS IN CONSOLE
   onSubmit = (values, formikFunctions) => {
-    // console.log(values);
     Axios.post("https://eindwerk.jnnck.be/api/users", {
       first_name: values.first_name,
       last_name: values.last_name,
@@ -23,37 +23,45 @@ class Register extends Component {
         console.log(error);
       });
 
-    //resetting values form:
+    //RESET VALUES FORM
     formikFunctions.resetForm();
   };
 
-  // Validating the values and displaying error message if missing
+  // VALIDATING OUR VALUES
   validate = (values) => {
     const errors = {};
-
+    const bits = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     const requiredFields = [
       "first_name",
       "last_name",
-      "email",
       "password",
       "favorite_color",
     ];
 
-    // Writing short loop to add error code to each field
+    //WRITING SHORT LOOP TO ADD ERROR CODE TO EACH FIELD
     requiredFields.forEach((field) => {
       if (!values[field]) {
         errors[field] = "required";
       }
     });
-    // returning errors if there are errors
+
+    //WRITING EMAIL VALIDATOR FOR LEGAL EMAILS
+    if (!values.email) {
+      errors.email = "Required";
+    } else if (!bits.test(values.email)) {
+      errors.email = "Invalid email address";
+    }
+
+    // WHEN CONDITIONS NOT MET, RETURN ERROR
     return errors;
   };
+
   render() {
     return (
       <div className="container">
         <Formik
           onSubmit={this.onSubmit}
-          // Making sure that the register form is always empty at the start
+          // MAKING SURE FORM IS ALWAYS EMPTY AT THE START
           initialValues={{
             first_name: "",
             last_name: "",
@@ -62,7 +70,7 @@ class Register extends Component {
           }}
           validate={this.validate}
         >
-          {/* Seperate our Forms for cleaner and shorter code */}
+          {/* SEPARATE FOR CLEANER AND SHORTER CODE */}
           <RegisterForm />
         </Formik>
       </div>

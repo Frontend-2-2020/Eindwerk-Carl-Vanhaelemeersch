@@ -3,7 +3,7 @@ import authReducer from "./reducers/authReducer";
 import postReducer from "./reducers/postReducer";
 import thunk from "redux-thunk";
 
-// Setup store and devtools
+// SETUP STORE AND DEVTOOLS
 const store = createStore(
   combineReducers({
     auth: authReducer,

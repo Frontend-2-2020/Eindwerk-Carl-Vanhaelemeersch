@@ -6,6 +6,9 @@ import Loader from "./Components/Loader";
 import { connect } from "react-redux";
 import { getUser } from "./redux/actions/authActions";
 import LoginLogoutBtn from "./Components/LoginLogoutBtn";
+import RegisterBtn from "./Components/RegisterBtn";
+
+// USING LAZY TO SAVE ON DATA LOADING
 
 const Home = React.lazy(() => import("./Pages/Home"));
 const Login = React.lazy(() => import("./Pages/Login"));
@@ -22,11 +25,10 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.auth);
+    const { auth } = this.props;
     return (
-      //Using react-router distribute our code into differents paths/pages on our site
-      // Add custum Loader
-
+      //USING REACT-ROUTER FOR ROUTING OUR SITE, AND MAKING REACT A LOT EASIER IN RETURN
+      // USING /.../:ID TO GIVE ID IN OUR URL, THEN USING const id = this.props.match.params.id TO USE IT IN CODE
       <Router>
         <Navbar collapseOnSelect expand="lg" bg="dark">
           <Navbar.Brand>
@@ -36,11 +38,8 @@ class App extends Component {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
               <LoginLogoutBtn />
-
-              <Link to="/register" className="nav-link">
-                Register
-              </Link>
-              <Link to="/user" className="nav-link">
+              <RegisterBtn />
+              <Link to={"/user/" + auth.id} className="nav-link">
                 User
               </Link>
             </Nav>
@@ -64,8 +63,13 @@ class App extends Component {
   }
 }
 
+// NEED TO GET OUR GETUSER HERE INSTEAD OF HOME, SO IT IS NEVER UNDEFINED
+const mapStateToProps = (state) => {
+  return { auth: state.auth };
+};
+
 const mapDispatchToProps = (dispatch) => ({
   getUser: () => dispatch(getUser()),
 });
 
-export default connect(undefined, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

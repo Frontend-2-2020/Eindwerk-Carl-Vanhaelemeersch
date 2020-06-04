@@ -1,16 +1,13 @@
 import React, { Component } from "react";
-// import API from "../libs/API";
 import { Formik } from "formik";
 import CommentPostForm from "./CommentPostForm";
-// import { getComments } from "../Pages/Detail";
+import PropTypes from "prop-types";
 
 class CommentPost extends Component {
-
+  // VALIDATE OUR VALUES (IF ERROR DISPLAY)
   validate = (values) => {
     const errors = {};
-
     const requiredFields = ["body"];
-
     requiredFields.forEach((field) => {
       if (!values[field]) {
         errors[field] = "required";
@@ -18,6 +15,9 @@ class CommentPost extends Component {
     });
     return errors;
   };
+
+  // ONSUBMIT FROM DETAIL, POST OUR VALUES, MAKING SURE INIT VALUE IS EMPTY WHEN COMMENTING,
+  // SEPARATE FORM FOR COMPACTER CODE
   render() {
     const { onSubmit } = this.props;
     return (
@@ -36,5 +36,8 @@ class CommentPost extends Component {
     );
   }
 }
+CommentPost.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default CommentPost;

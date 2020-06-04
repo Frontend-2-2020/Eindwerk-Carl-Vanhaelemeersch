@@ -3,25 +3,25 @@ import { connect } from "react-redux";
 import API from "../libs/API";
 import { getPosts } from "../redux/actions/postActions";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class CommentList extends Component {
+  // REMOVE SELECTED COMMENT, THEN LOAD POSTS (DIPLAY ERROR IF FAIL)
   removeComment = () => {
-    API.delete(
-      "https://eindwerk.jnnck.be/api/comments/" + this.props.comment.id
-    )
+    const { getPostsByID, comment } = this.props;
+    API.delete("https://eindwerk.jnnck.be/api/comments/" + comment.id)
       .then((response) => {
-        console.log(response.data);
-        // this.setState((this.props.comments: response.data));
-        this.props.getPostsByID();
+        getPostsByID();
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  // WHEN LOGGED IN USER = USER ID OF COMMENT, DISPLAY EDIT OR DELETE COMMENT
+  // DIPLAY COMMENT AS WRITTEN BY CODEDITOR
   render() {
-    // console.log(this.props);
     const { comment, auth } = this.props;
-    console.log(comment);
     return (
       <div className="mt-4 border border-primary rounded p-4">
         <div dangerouslySetInnerHTML={{ __html: comment.body }}></div>
@@ -42,10 +42,16 @@ class CommentList extends Component {
     );
   }
 }
+CommentList.propTypes = {
+  getPostsByID: PropTypes.func.isRequired,
+  comment: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+// REDUX PART TO GET AUTH AND POSTS
 const mapStateToProps = (state) => {
   return { auth: state.auth };
 };
-
 const mapDispatchToProps = (dispatch) => ({
   getPosts: () => dispatch(getPosts()),
 });

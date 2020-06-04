@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { ErrorMessage } from "formik";
+import PropTypes from "prop-types";
 
 class CustomErrorMessage extends Component {
+  // A SEPPARATE ERRORMESSAGE TO SAVE SPACE AND TIME, CAUSE IT'S ALL THE SAME
   render() {
     return (
-      // Making a sepperate errorMessage to save space and time in our forms
-      // because it's all the same error message
       <ErrorMessage
         name={this.props.name}
         render={(error) => <div className=" small text-danger">{error}</div>}
@@ -13,5 +13,8 @@ class CustomErrorMessage extends Component {
     );
   }
 }
+CustomErrorMessage.propTypes = {
+  name: PropTypes.string,
+};
 
 export default CustomErrorMessage;

@@ -3,8 +3,10 @@ import { Form } from "formik";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import CustomErrorMessage from "./CustomErrorMessage";
+import PropTypes from "prop-types";
 
 class CommentPostForm extends Component {
+  // FORM TO WRITE COMMENTS IN. IF NOT VALID, ERRORMESSAGE
   render() {
     const { values, setFieldValue } = this.props;
     return (
@@ -25,5 +27,9 @@ class CommentPostForm extends Component {
     );
   }
 }
+CommentPostForm.propTypes = {
+  values: PropTypes.object.isRequired,
+  setFieldValue: PropTypes.func.isRequired,
+};
 
 export default CommentPostForm;

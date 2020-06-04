@@ -1,3 +1,4 @@
+// SETUP INIT STATE, DECLARE NAME ACTION, WHAT IT DOES
 const initialState = {};
 const postReducer = (state = initialState, action) => {
   switch (action.type) {

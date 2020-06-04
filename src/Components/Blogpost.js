@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import Post from "./Post";
+import Loader from "./Loader";
+import PropTypes from "prop-types";
 
 class Blogpost extends Component {
   render() {
     const { posts } = this.props;
-    // console.log("blogpost");
 
+    // WHEN NO POST, LOADER. WHEN POSTS, MAP THEM
     if (!posts) {
-      return <div>...Loading</div>;
+      return <Loader />;
     } else {
       return (
         <div className="container">
@@ -19,5 +21,7 @@ class Blogpost extends Component {
     }
   }
 }
-
+Blogpost.propTypes = {
+  posts: PropTypes.object.isRequired,
+};
 export default Blogpost;

@@ -7,10 +7,8 @@ import { connect } from "react-redux";
 
 class Login extends Component {
   onSubmit = (values, formikFunctions) => {
-    // check to see if we get our values, remove console.log later
-    // console.log(values);
-
-    // posting our login data with our client data too the api too receive our token
+    // POST OUR LOGIN DATA WITH CLIENT DATA TO API TO GET TOKEN, SAVE IN LOCALSTORAGE,
+    // GET USER, THEN REDIRECT TO HOMEPAGE, RESETFORM
     API.post("https://eindwerk.jnnck.be/oauth/token", {
       grant_type: "password",
       client_id: 2,
@@ -18,12 +16,7 @@ class Login extends Component {
       username: values.email,
       password: values.password,
     })
-
-      // After reciving token, store it in localStorage to use it afterwords and we redirect ot the homepage
       .then((response) => {
-        //checking data, remove later
-        // console.log(response);
-
         window.localStorage.setItem(
           "CarlEindwerk_token",
           response.data.access_token
@@ -33,29 +26,26 @@ class Login extends Component {
         this.props.getUser();
         this.props.history.push("/");
       })
-      // In case we fail, we show our error in the login
+      // IN CASE WE FAIL SHOW ERROR
       .catch((error) => {
         console.log(error);
       });
-    // console.log(values.email, values.password);
     formikFunctions.resetForm();
   };
 
-  // Validating the values and displaying error message if missing
+  // VALIDATE VALUES AND DISPLAY ERROR IF THERE'S ONE
   validate = (values) => {
     const errors = {};
-
     const requiredFields = ["email", "password"];
-
     requiredFields.forEach((field) => {
       if (!values[field]) {
         errors[field] = "required";
       }
     });
-
     return errors;
   };
 
+  // SEPARATE OUR FORM TO OTHER COMPONENT FOR CLEARER, COMPACTER CODE
   render() {
     return (
       <Formik
@@ -66,13 +56,13 @@ class Login extends Component {
         }}
         validate={this.validate}
       >
-        {/* Seperate our the html and js for cleaner and shorter code */}
         <LoginForm />
       </Formik>
     );
   }
 }
 
+// WHEN LOGGED IN, GETUSER
 const mapDispatchToProps = (dispatch) => ({
   getUser: () => dispatch(getUser()),
 });
