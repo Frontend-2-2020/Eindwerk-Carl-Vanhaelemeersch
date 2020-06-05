@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { Formik } from "formik";
-import CreatePostForm from "../Components/CreatePostForm";
+import CreatePostForm from "../Components/HomePage/CreatePostForm";
 import API from "../libs/API";
 import { withRouter } from "react-router-dom";
 import Loader from "../Components/Loader";

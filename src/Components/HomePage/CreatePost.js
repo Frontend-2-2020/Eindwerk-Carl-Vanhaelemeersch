@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
 import API from "../../libs/API";
-import CreatePostForm from "../CreatePostForm";
+import CreatePostForm from "./CreatePostForm";
 import { withRouter } from "react-router";
 
 class CreatePost extends Component {
@@ -35,7 +35,6 @@ class CreatePost extends Component {
 
   // INIT VALUES ALWAY EMPTY TO START. SEPERATE FORM FOR SHORTER CODE
   render() {
-    const { auth } = this.props;
     return (
       <div id="createPost">
         <Formik

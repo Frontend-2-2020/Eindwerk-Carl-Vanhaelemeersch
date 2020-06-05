@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Form } from "formik";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import CustomErrorMessage from "./CustomErrorMessage";
+import CustomErrorMessage from "../CustomErrorMessage";
 import PropTypes from "prop-types";
 
 class CommentPostForm extends Component {

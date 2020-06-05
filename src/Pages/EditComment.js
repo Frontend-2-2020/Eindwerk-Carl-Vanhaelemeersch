@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import API from "../libs/API";
 import { Formik } from "formik";
-import CommentPostForm from "../Components/CommentPostForm";
+import CommentPostForm from "../Components/Comment/CommentPostForm";
 import Loader from "../Components/Loader";
 
 class EditComment extends Component {

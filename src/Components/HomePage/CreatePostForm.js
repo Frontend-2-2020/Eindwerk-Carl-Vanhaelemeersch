@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Form, Field } from "formik";
-import CustomErrorMessage from "./CustomErrorMessage";
+import CustomErrorMessage from "../CustomErrorMessage";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import PropTypes from "prop-types";
-import "../css/createPostForm.css";
+import "../../css/createPostForm.css";
 
 class CreatePostForm extends Component {
   // FORM TO WRITE COMMENTS IN. IF NOT VALID, ERRORMESSAGE
