@@ -12,7 +12,7 @@ class CreatePostForm extends Component {
     const { values, setFieldValue } = this.props;
     return (
       <Form id="clearForm">
-        <div className="form-row mt-4 ck-container">
+        <div className="form-row ck-container">
           <label htmlFor="title"></label>
           <Field
             type="text"
@@ -34,7 +34,7 @@ class CreatePostForm extends Component {
             />
             <CustomErrorMessage name="body" />
 
-            <button type="submit" className="btn btn-primary btn-block mt-2">
+            <button type="submit" className="btn btn-primary ck-btn">
               Submit
             </button>
           </div>

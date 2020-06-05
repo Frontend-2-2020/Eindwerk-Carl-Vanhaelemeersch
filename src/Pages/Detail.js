@@ -92,7 +92,12 @@ class Detail extends Component {
         <h1>{posts.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: posts.body }}></div>
         <p>
-          <b>Created by:</b> {posts.user.first_name} {posts.user.last_name}
+          <b>Created by:</b>{" "}
+          <Link to={"/user/" + posts.user.id}>
+            <span className="text-muted">
+              {posts.user.first_name + "" + posts.user.last_name}
+            </span>
+          </Link>
         </p>
 
         <div className="container w-50">
