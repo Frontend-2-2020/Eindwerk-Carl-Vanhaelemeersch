@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "rc-pagination/assets/index.css";
 import { getPosts } from "../redux/actions/postActions";
-import Blogpost from "../Components/Blogpost";
-import CreatePost from "../Components/CreatePost";
+import Blogpost from "../Components/HomePage/Blogpost";
+import CreatePost from "../Components/HomePage/CreatePost";
 import Pagination from "rc-pagination";
 import PropTypes from "prop-types";
 
@@ -24,6 +24,7 @@ class Home extends Component {
 
   render() {
     const { auth, posts, current_page, total_items, per_page } = this.props;
+    const naam = auth.first_name + " " + auth.last_name;
 
     // LOADER WHEN WE DON'T HAVE OUR DATA YET
     if (!auth || !total_items) {
@@ -32,10 +33,12 @@ class Home extends Component {
       // COMPONENTS MAKING UP OUR HOME PAGE WITH PAGINATION,
       // LIST OF POSTS AND WELCOME MESSAGE, CREATEPOST IF LOGGED IN
       return (
-        <div>
-          {auth.last_name && (
-            <h1>Welkom terug {auth.first_name + " " + auth.last_name}</h1>
-          )}
+        <div
+          className="container border shadow-lg p-3 bg-white rounded"
+          style={{ backgroundColor: "rgb(20, 252, 206, 0.02)" }}
+        >
+          {auth.last_name && <h1>Welkom terug {naam}</h1>}
+
           <Pagination
             onChange={this.onChange}
             page={current_page}

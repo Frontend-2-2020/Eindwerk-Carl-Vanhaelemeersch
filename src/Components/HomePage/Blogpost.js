@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Post from "./Post";
-import Loader from "./Loader";
+import Loader from "../Loader";
 import PropTypes from "prop-types";
 
 class Blogpost extends Component {

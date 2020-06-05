@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { connect } from "react-redux";
-import CommentPost from "../Components/CommentPost";
-import CommentList from "../Components/CommentList";
+import CommentPost from "../Components/Comment/CommentPost";
+import CommentList from "../Components/Comment/CommentList";
 import API from "../libs/API";
 import { Link } from "react-router-dom";
 import Loader from "../Components/Loader";

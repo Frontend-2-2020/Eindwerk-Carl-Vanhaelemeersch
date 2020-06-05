@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import API from "../libs/API";
-import { getPosts } from "../redux/actions/postActions";
+import API from "../../libs/API";
+import { getPosts } from "../../redux/actions/postActions";
 import PropTypes from "prop-types";
 
 class Post extends Component {
@@ -24,7 +24,7 @@ class Post extends Component {
     // DISPLAY OF OUR POST AND IF LOGGED IN ID = POST USER ID, OPTION TO EDIT OR REMOVE POST
     return (
       <div>
-        <div className="card mt-4" style={{ width: "50%" }}>
+        <div className="card mt-4">
           <div className="card-body">
             <Link to={"/detail/" + post.id}>{post.title}</Link>
 

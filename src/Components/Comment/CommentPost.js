@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
-import CommentPostForm from "./CommentPostForm";
+import CommentPostForm from "../CommentPostForm";
 import PropTypes from "prop-types";
 
 class CommentPost extends Component {

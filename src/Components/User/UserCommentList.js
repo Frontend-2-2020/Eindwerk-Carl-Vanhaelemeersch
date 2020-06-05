@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import API from "../libs/API";
+import API from "../../libs/API";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 

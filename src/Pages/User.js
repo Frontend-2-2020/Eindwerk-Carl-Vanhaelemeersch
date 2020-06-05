@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import UserPage from "../Components/UserPage";
-import UserPostList from "../Components/UserPostList";
-import UserCommentList from "../Components/UserCommentList";
+import UserPage from "../Components/User/UserPage";
+import UserPostList from "../Components/User/UserPostList";
+import UserCommentList from "../Components/User/UserCommentList";
 import Loader from "../Components/Loader";
 
 class User extends Component {

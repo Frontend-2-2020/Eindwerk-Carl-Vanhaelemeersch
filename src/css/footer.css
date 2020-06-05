@@ -1,0 +1,14 @@
+.footer {
+  background-color: black;
+  margin-top: 5rem;
+}
+
+.icon {
+  font-size: 1.5vw;
+  color: whitesmoke;
+  margin: 7vh 0 7vh 0;
+}
+
+.companyText {
+  padding-bottom: 2vh;
+}

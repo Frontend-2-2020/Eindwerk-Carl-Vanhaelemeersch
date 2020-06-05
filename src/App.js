@@ -7,6 +7,10 @@ import { connect } from "react-redux";
 import { getUser } from "./redux/actions/authActions";
 import LoginLogoutBtn from "./Components/LoginLogoutBtn";
 import RegisterBtn from "./Components/RegisterBtn";
+import "./css/normalize.css";
+import { faFlushed } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Footer from "./Components/Footer";
 
 // USING LAZY TO SAVE ON DATA LOADING
 
@@ -30,16 +34,25 @@ class App extends Component {
       //USING REACT-ROUTER FOR ROUTING OUR SITE, AND MAKING REACT A LOT EASIER IN RETURN
       // USING /.../:ID TO GIVE ID IN OUR URL, THEN USING const id = this.props.match.params.id TO USE IT IN CODE
       <Router>
-        <Navbar collapseOnSelect expand="lg" bg="dark">
-          <Navbar.Brand>
-            <Link to="/"> Placeholder Home</Link>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+          <Navbar.Brand style={{ width: "15vw", marginLeft: "1.1vw" }}>
+            <Link to="/">
+              <FontAwesomeIcon
+                icon={faFlushed}
+                style={{ fontSize: 100, color: "white", marginLeft: "5vw" }}
+              />
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <LoginLogoutBtn />
-              <RegisterBtn />
-              <Link to={"/user/" + auth.id} className="nav-link">
+              <LoginLogoutBtn style={{ marginLeft: "2vw" }} />
+              <RegisterBtn style={{ marginLeft: "2vw" }} />
+              <Link
+                to={"/user/" + auth.id}
+                className="nav-link"
+                style={{ marginLeft: "2vw" }}
+              >
                 User
               </Link>
             </Nav>
@@ -58,6 +71,8 @@ class App extends Component {
             <Route path="*" component={NotFound} />
           </Switch>
         </Suspense>
+
+        <Footer />
       </Router>
     );
   }
