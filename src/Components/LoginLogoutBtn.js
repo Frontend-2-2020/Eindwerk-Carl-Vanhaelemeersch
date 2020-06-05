@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 class LoginLogoutBtn extends Component {
@@ -32,8 +31,5 @@ class LoginLogoutBtn extends Component {
 LoginLogoutBtn.propTypes = {
   auth: PropTypes.object.isRequired,
 };
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
 
-export default connect(mapStateToProps)(LoginLogoutBtn);
+export default LoginLogoutBtn;

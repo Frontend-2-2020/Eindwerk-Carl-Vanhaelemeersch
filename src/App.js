@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { getUser } from "./redux/actions/authActions";
 import LoginLogoutBtn from "./Components/LoginLogoutBtn";
 import RegisterBtn from "./Components/RegisterBtn";
+import UserBtn from "./Components/UserBtn";
 import "./css/normalize.css";
 import { faFlushed } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -46,15 +47,9 @@ class App extends Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <LoginLogoutBtn style={{ marginLeft: "2vw" }} />
-              <RegisterBtn style={{ marginLeft: "2vw" }} />
-              <Link
-                to={"/user/" + auth.id}
-                className="nav-link"
-                style={{ marginLeft: "2vw" }}
-              >
-                User
-              </Link>
+              <LoginLogoutBtn auth={auth} style={{ marginLeft: "2vw" }} />
+              <RegisterBtn auth={auth} style={{ marginLeft: "2vw" }} />
+              <UserBtn auth={auth} style={{ marginLeft: "2vw" }} />
             </Nav>
           </Navbar.Collapse>
         </Navbar>

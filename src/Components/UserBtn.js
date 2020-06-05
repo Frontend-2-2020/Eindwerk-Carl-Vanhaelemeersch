@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-class RegisterBtn extends Component {
-  // DISPLAY REGISTER PENDING IF WE ARE LOGGED IN OR NOT
-
+class UserBtn extends Component {
   render() {
     const { auth } = this.props;
-    if (!auth.last_name) {
+    if (auth.last_name) {
       return (
-        <Link to="/register" className="nav-link">
-          Register
+        <Link to={"/user/" + auth.id} className="nav-link">
+          User
         </Link>
       );
     } else {
@@ -18,4 +16,4 @@ class RegisterBtn extends Component {
   }
 }
 
-export default RegisterBtn;
+export default UserBtn;
