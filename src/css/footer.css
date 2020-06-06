@@ -1,10 +1,9 @@
 .footer {
-  background-color: black;
-  margin-top: 5rem;
+  background-color: rgba(0, 0, 0, 0.952);
 }
 
 .icon {
-  font-size: 1.5vw;
+  font-size: 1.5em;
   color: whitesmoke;
   margin: 7vh 0 7vh 0;
 }

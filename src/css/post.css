@@ -1,0 +1,36 @@
+.postCard {
+  min-height: 30vh;
+  background-color: rgba(226, 247, 255, 0.308);
+  margin: 1em 0 2.5em 0;
+  border: 5px solid rgba(226, 249, 255, 0.459);
+  border-radius: 15px;
+  position: relative;
+}
+
+.postTitle {
+  text-align: center;
+  margin-top: 2em;
+}
+
+.postBody {
+  overflow: auto;
+  margin: 2em 1em 5em 1em;
+  font-size: 1.15rem;
+}
+
+.postBody img {
+  max-width: 100%;
+  border-radius: 15px;
+}
+
+.postPosted {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+
+@media only screen and (max-width: 600px) {
+  .postPosted {
+    font-size: 0.75em;
+  }
+}

@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import API from "../../libs/API";
 import { getPosts } from "../../redux/actions/postActions";
 import PropTypes from "prop-types";
+import "../../css/post.css";
+import "../../css/buttons.css";
 
 class Post extends Component {
   // WHEN REMOVEPOST: DELETE CORRECT POST, THEN GETPOSTS AGAIN (DISPLAY ERROR IF ANY)
@@ -24,30 +26,44 @@ class Post extends Component {
     // DISPLAY OF OUR POST AND IF LOGGED IN ID = POST USER ID, OPTION TO EDIT OR REMOVE POST
     return (
       <div>
-        <div className="card mt-4">
-          <div className="card-body">
-            <Link to={"/detail/" + post.id}>{post.title}</Link>
+        <div className=" postCard shadow-lg">
+          <div className=" postTitle">
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "black",
+                fontSize: "2.3em",
+              }}
+              to={"/detail/" + post.id}
+            >
+              {post.title}
+            </Link>
 
             <p
-              className="card-text"
+              className=" postBody"
               dangerouslySetInnerHTML={{ __html: post.body }}
             ></p>
           </div>
-          <h6 className="card-subtitle mb-2 ">
+          <h6 className=" postPosted">
             Posted by:
-            <Link to={"/user/" + post.user.id}>
+            <Link
+              to={"/user/" + post.user.id}
+              style={{
+                textDecoration: "none",
+              }}
+            >
               <span className="text-muted">
-                {post.user.first_name + "" + post.user.last_name}
+                {" " + post.user.first_name + " " + post.user.last_name}
               </span>
             </Link>
           </h6>
           {post.user.id === auth.id && (
             <div>
               <Link to={"/editPost/" + post.id}>
-                <span className="badge badge-info">Edit</span>
+                <span className="knop editen">Edit</span>
               </Link>
 
-              <span className="badge badge-danger" onClick={this.removePost}>
+              <span className="knop deleten" onClick={this.removePost}>
                 Remove
               </span>
             </div>

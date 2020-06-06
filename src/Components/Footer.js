@@ -12,13 +12,13 @@ class Footer extends Component {
     return (
       <div className="container-fluid text-center footer">
         <div className="row">
-          <div className="col-sm">
+          <div className="col">
             <FontAwesomeIcon icon={faFacebookF} className="icon" />
           </div>
-          <div className="col-sm">
+          <div className="col">
             <FontAwesomeIcon icon={faInstagram} className="icon" />
           </div>
-          <div className="col-sm">
+          <div className="col">
             <FontAwesomeIcon icon={faTwitter} className="icon" />
           </div>
         </div>

@@ -6,6 +6,7 @@ import Blogpost from "../Components/HomePage/Blogpost";
 import CreatePost from "../Components/HomePage/CreatePost";
 import Pagination from "rc-pagination";
 import PropTypes from "prop-types";
+import "../css/buttons.css";
 
 class Home extends Component {
   // GETTING OUR POSTS, AND GETTING THEM AGAIN EVERY 45 SEC TO SEE IF THERE'RE NEW POSTS
@@ -22,6 +23,10 @@ class Home extends Component {
     this.props.getPosts(page);
   };
 
+  goToTop() {
+    window.scrollTo({ top: 580, behavior: "smooth" });
+  }
+
   render() {
     const { auth, posts, current_page, total_items, per_page } = this.props;
     const naam = auth.first_name + " " + auth.last_name;
@@ -33,28 +38,26 @@ class Home extends Component {
       // COMPONENTS MAKING UP OUR HOME PAGE WITH PAGINATION,
       // LIST OF POSTS AND WELCOME MESSAGE, CREATEPOST IF LOGGED IN
       return (
-        <div
-          className="container border shadow-lg p-3 bg-white rounded"
-          style={{ backgroundColor: "rgb(20, 252, 206, 0.02)" }}
-        >
-          {auth.last_name && <h1>Welkom terug {naam}</h1>}
+        <div>
+          <div
+            className="container border shadow-lg  rounded"
+            style={{ backgroundColor: "rgb(226, 247, 255, 0.308)" }}
+          >
+            {auth.last_name && <h1>Welkom terug {naam}</h1>}
 
-          <Pagination
-            onChange={this.onChange}
-            page={current_page}
-            total={total_items}
-            pageSize={per_page}
-          />
-          {auth.last_name && <CreatePost />}
+            {auth.last_name && <CreatePost />}
 
-          <Blogpost posts={posts} />
-
-          <Pagination
-            onChange={this.onChange}
-            page={current_page}
-            total={total_items}
-            pageSize={per_page}
-          />
+            <Pagination
+              onChange={this.onChange}
+              page={current_page}
+              total={total_items}
+              pageSize={per_page}
+            />
+            <Blogpost posts={posts} />
+          </div>
+          <div onClick={this.goToTop} className="container scrollToTop">
+            Go To Top
+          </div>
         </div>
       );
     }

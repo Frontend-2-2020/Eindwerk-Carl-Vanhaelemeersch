@@ -52,7 +52,7 @@ class App extends Component {
                 icon={faFlushed}
                 style={{
                   fontSize: 100,
-                  color: "white",
+                  color: "rgb(205, 249, 250, 0.7)",
                   margin: "2vh 0 2vh 5vw",
                   transform: "skew(25deg)",
                 }}

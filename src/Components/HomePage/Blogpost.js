@@ -12,7 +12,7 @@ class Blogpost extends Component {
       return <Loader />;
     } else {
       return (
-        <div className="container">
+        <div className="container" style={{ overflow: "auto" }}>
           {posts.map((post) => (
             <Post post={post} key={post.id} />
           ))}
