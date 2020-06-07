@@ -44,6 +44,7 @@ class CommentList extends Component {
             />
           </div>
         )}
+        {comment.user.id !== auth.id && <div className="com-filler"></div>}
         <div
           className=" com-body"
           dangerouslySetInnerHTML={{ __html: comment.body }}

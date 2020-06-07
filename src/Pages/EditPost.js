@@ -32,13 +32,14 @@ class EditPost extends Component {
   // THEN REDIRECT TO CORRECT POST (DISPLAY ERROR IF ANY)
   onSubmit = (values) => {
     const id = this.props.match.params.id;
+    const { post } = this.state;
     API.put("https://eindwerk.jnnck.be/api/posts/" + id, {
       title: values.title,
       body: values.body,
     })
       .then((response) => {
         this.getPostsByID();
-        this.props.history.push("/");
+        this.props.history.push("/Detail/" + post.id);
       })
       .catch((error) => {
         console.log(error);
@@ -67,7 +68,7 @@ class EditPost extends Component {
     }
     // SEPERATE FORM FOR SHORTER AND CLEARED CODE, WITH OUR INITVALUES OUR VALUES FROM THE GETPOSTSSBYID
     return (
-      <div className="container m-5" id="editPost">
+      <div className="container mx-auto" id="editPost">
         <Formik
           onSubmit={this.onSubmit}
           // Making sure that the values are there to edit

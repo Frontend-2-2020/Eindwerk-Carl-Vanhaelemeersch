@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import API from "../../libs/API";
 import PropTypes from "prop-types";
+import "../../css/user.css";
+import "../../css/buttons.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 class UserPostList extends Component {
   // REMOVE POST, THEN GETUSER (DISPLAY ERROR IF ANY)
@@ -22,16 +26,25 @@ class UserPostList extends Component {
 
     // LIST OF POST TITLES AND IF LOGGED IN ID = POST USER ID, OPTION TO EDIT AND REMOVE POST
     return (
-      <div>
-        <Link to={"/detail/" + posts.id}>{posts.title}</Link>
+      <div className="usList-cont">
+        <Link
+          to={"/detail/" + posts.id}
+          style={{
+            color: "black",
+          }}
+        >
+          <p className="usList-title">{posts.title}</p>
+        </Link>
         {posts.user_id === auth.id && (
-          <div className="d-inline ml-2">
+          <div className="knop-cont">
             <Link to={"/editPost/" + posts.id}>
-              <span className="badge badge-info">Edit</span>
+              <FontAwesomeIcon icon={faEdit} className="knop-sm knop-sm-edit" />
             </Link>
-            <span className="badge badge-danger" onClick={this.removePost}>
-              Remove
-            </span>
+            <FontAwesomeIcon
+              icon={faTrashAlt}
+              className="knop-sm knop-sm-delete"
+              onClick={this.removePost}
+            />
           </div>
         )}
       </div>

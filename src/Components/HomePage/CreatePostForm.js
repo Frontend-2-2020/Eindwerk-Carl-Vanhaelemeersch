@@ -5,6 +5,7 @@ import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import PropTypes from "prop-types";
 import "../../css/createPostForm.css";
+import "../../css/buttons.css";
 
 class CreatePostForm extends Component {
   // FORM TO WRITE COMMENTS IN. IF NOT VALID, ERRORMESSAGE
@@ -35,7 +36,7 @@ class CreatePostForm extends Component {
             />
             <CustomErrorMessage name="body" />
 
-            <button type="submit" className="btn btn-primary ck-btn">
+            <button type="submit" className=" knop-sub knop-sub-home">
               Submit
             </button>
           </div>

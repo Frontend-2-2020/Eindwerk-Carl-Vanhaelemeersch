@@ -4,6 +4,7 @@ import UserPage from "../Components/User/UserPage";
 import UserPostList from "../Components/User/UserPostList";
 import UserCommentList from "../Components/User/UserCommentList";
 import Loader from "../Components/Loader";
+import "../css/user.css";
 
 class User extends Component {
   // DECLARE STATE
@@ -39,26 +40,40 @@ class User extends Component {
     return (
       <div className="container">
         <UserPage user={user} />
-        <div>
-          <h3>Geposte Artikelen: </h3>
-          {user.blog_posts.map((posts) => (
-            <UserPostList
-              posts={posts}
-              getUsersByID={this.getUsersByID}
-              key={posts.id}
-            />
-          ))}
-        </div>
+        <div
+          className="row"
+          style={{
+            border: "1px solid black",
+            backgroundColor: "ivory",
+            borderRadius: "15px",
+            marginBottom: "2em",
+          }}
+        >
+          <div className="col-lg">
+            <div className="user-container">
+              <h3 className="user-title">Geposte Artikelen: </h3>
+              {user.blog_posts.map((posts) => (
+                <UserPostList
+                  posts={posts}
+                  getUsersByID={this.getUsersByID}
+                  key={posts.id}
+                />
+              ))}
+            </div>
+          </div>
 
-        <div className="container">
-          <h3>Geposte Comments: </h3>
-          {user.comments.map((comment) => (
-            <UserCommentList
-              comment={comment}
-              getUsersByID={this.getUsersByID}
-              key={comment.id}
-            />
-          ))}
+          <div className="col-lg ">
+            <div className="user-container">
+              <h3 className="user-title">Geposte Comments: </h3>
+              {user.comments.map((comment) => (
+                <UserCommentList
+                  comment={comment}
+                  getUsersByID={this.getUsersByID}
+                  key={comment.id}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     );

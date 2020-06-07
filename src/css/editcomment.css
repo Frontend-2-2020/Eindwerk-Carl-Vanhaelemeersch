@@ -1,0 +1,19 @@
+.ediCom-cont {
+  width: 80vw;
+  margin: 3em auto;
+  min-height: 45vh;
+  border-radius: 10px;
+  box-shadow: 0px 0px 45px 0px rgba(0, 0, 0, 0.82);
+  background-color: rgba(5, 4, 4, 0.911);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ediCom-cont-inner {
+  padding: 2em 1em;
+  width: 100%;
+}
+.ediCom-filler {
+  min-height: 3em;
+}

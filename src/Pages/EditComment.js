@@ -4,6 +4,7 @@ import API from "../libs/API";
 import { Formik } from "formik";
 import CommentPostForm from "../Components/Comment/CommentPostForm";
 import Loader from "../Components/Loader";
+import "../css/editcomment.css";
 
 class EditComment extends Component {
   // WORKING WITH REDUX AND STATE FOR SIMPLER USE AND COMPREHENSION.
@@ -66,16 +67,21 @@ class EditComment extends Component {
 
     // SEPERATE FORM FOR SHORTER AND CLEARED CODE, WITH OUR INITVALUES OUR VALUES FROM THE GETCOMMENTSBYID
     return (
-      <div className="container m-5" id="editComment">
-        <Formik
-          onSubmit={this.onSubmit}
-          initialValues={{
-            body: comment.body,
-          }}
-          validate={this.validate}
-        >
-          {(props) => <CommentPostForm {...props} />}
-        </Formik>
+      <div className="ediCom-cont">
+        <div className="ediCom-cont-inner" id="editComment">
+          <div>
+            <div className="ediCom-filler"></div>
+            <Formik
+              onSubmit={this.onSubmit}
+              initialValues={{
+                body: comment.body,
+              }}
+              validate={this.validate}
+            >
+              {(props) => <CommentPostForm {...props} />}
+            </Formik>
+          </div>
+        </div>
       </div>
     );
   }

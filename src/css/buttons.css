@@ -9,6 +9,28 @@
   text-align: center;
 }
 
+.knop-sub {
+  width: 100%;
+  padding: 1em 0;
+  font-weight: bold;
+  font-size: large;
+  letter-spacing: 0.09em;
+  color: white;
+  background: none;
+  border-radius: 5px;
+}
+
+.knop-sub-home {
+  border: 2px outset rgb(10, 223, 28);
+  background-color: rgba(23, 173, 219, 0.986);
+  margin: 2em 0 1em 0;
+}
+.knop-sub-com {
+  margin: 0.7em 0 1em 0;
+  border: 2px outset rgba(42, 1, 1, 0.829);
+  background-color: rgba(27, 1, 1, 0.603);
+}
+
 .knop-com {
   font-size: 1.5em;
   position: absolute;
@@ -26,6 +48,24 @@
   left: 2.5em;
 }
 .knop-com-delete:hover {
+  cursor: pointer;
+}
+
+.knop-cont {
+  min-width: 4.7em;
+}
+
+.knop-sm {
+  font-size: 1.3em;
+  margin: 0 0.4em;
+}
+.knop-sm-edit {
+  color: rgb(13, 197, 68);
+}
+.knop-sm-delete {
+  color: rgb(250, 0, 0);
+}
+.knop-sm-delete:hover {
   cursor: pointer;
 }
 
@@ -64,6 +104,15 @@
     font-size: 0.6em;
   }
   .knop-com {
+    font-size: 1.3em;
     position: relative;
+  }
+  .knop-com-edit {
+    top: 0.5em;
+    left: 0.5em;
+  }
+  .knop-com-delete {
+    top: 0.5em;
+    left: 1em;
   }
 }

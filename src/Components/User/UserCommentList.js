@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import API from "../../libs/API";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import "../../css/user.css";
+import "../../css/buttons.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 class UserCommentList extends Component {
   // REMOVEPOST ON CORRECT COMMENT, THEN GETUSERSBYID (DISPLAY ERRORS IF ANY)
@@ -22,18 +26,28 @@ class UserCommentList extends Component {
   render() {
     const { comment, auth } = this.props;
     return (
-      <div className="border border-primary mb-4">
-        <Link to={"/detail/" + comment.blog_post_id}>
-          <div dangerouslySetInnerHTML={{ __html: comment.body }}></div>
+      <div className="usList-cont">
+        <Link
+          to={"/detail/" + comment.blog_post_id}
+          style={{
+            color: "black",
+          }}
+        >
+          <div
+            dangerouslySetInnerHTML={{ __html: comment.body }}
+            className="usList-com"
+          ></div>
         </Link>
         {comment.user_id === auth.id && (
-          <div className="d-inline ml-2">
+          <div className="knop-cont">
             <Link to={"/editComment/" + comment.id}>
-              <span className="badge badge-info mb-4">Edit</span>
+              <FontAwesomeIcon icon={faEdit} className="knop-sm knop-sm-edit" />
             </Link>
-            <span className="badge badge-danger" onClick={this.removeComment}>
-              Remove
-            </span>
+            <FontAwesomeIcon
+              icon={faTrashAlt}
+              className="knop-sm knop-sm-delete"
+              onClick={this.removeComment}
+            />
           </div>
         )}
       </div>

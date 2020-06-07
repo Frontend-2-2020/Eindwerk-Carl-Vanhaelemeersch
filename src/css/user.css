@@ -1,0 +1,37 @@
+/* USERS PAGE */
+
+.user-container {
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: white;
+  margin: 2em 0em;
+}
+
+.user-title {
+  font-weight: bold;
+  font-size: 2.2em;
+  text-align: center;
+  margin: 0.7em auto;
+}
+
+/* USERPOSTLIST EN USERCOMMENTLIST*/
+.usList-cont {
+  background-color: ivory;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+  margin: 1em 0.5em;
+  border-radius: 5px;
+  min-height: 9vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.usList-title {
+  font-size: 1.3em;
+  font-weight: 500;
+  margin-left: 0.5em;
+}
+
+.usList-com {
+  margin-left: 0.7em;
+}

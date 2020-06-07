@@ -24,7 +24,7 @@ class Home extends Component {
   };
 
   goToTop() {
-    window.scrollTo({ top: 580, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   render() {
@@ -44,6 +44,7 @@ class Home extends Component {
             style={{ backgroundColor: "rgb(226, 247, 255, 0.308)" }}
           >
             {auth.last_name && <h1>Welkom terug {naam}</h1>}
+            {!auth.last_name && <h1>Welkom, en geniet van de site</h1>}
 
             {auth.last_name && <CreatePost />}
 

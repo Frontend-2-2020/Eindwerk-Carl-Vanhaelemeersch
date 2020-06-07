@@ -4,6 +4,7 @@ import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import CustomErrorMessage from "../CustomErrorMessage";
 import PropTypes from "prop-types";
+import "../../css/buttons.css";
 
 class CommentPostForm extends Component {
   // FORM TO WRITE COMMENTS IN. IF NOT VALID, ERRORMESSAGE
@@ -11,7 +12,7 @@ class CommentPostForm extends Component {
     const { values, setFieldValue } = this.props;
     return (
       <div className="ck-cont-con">
-        <Form id="clearform">
+        <Form id="clearform" style={{ color: "black" }}>
           <CKEditor
             editor={ClassicEditor}
             data={values.body}
@@ -21,8 +22,8 @@ class CommentPostForm extends Component {
             }}
           />
           <CustomErrorMessage name="body" />
-          <button type="submit" className="btn btn-primary float-right mt-4">
-            Submit
+          <button type="submit" className="knop-sub knop-sub-com">
+            Comment
           </button>
         </Form>
       </div>

@@ -1,7 +1,7 @@
 .com-cont {
   margin: 2em auto 2em auto;
   position: relative;
-  padding: 4em;
+  padding: 2em 4em 2em 4em;
   border-radius: 15px;
   background-color: rgb(27, 27, 27);
 }
@@ -20,5 +20,12 @@
   }
   .com-body {
     text-align: center;
+  }
+  .com-by {
+    text-align: center;
+    padding-bottom: 1.3em;
+  }
+  .com-filler {
+    min-height: 0.7em;
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import "../../css/userpage.css";
 
 class UserPage extends Component {
   // DISPLAY OF OUR USER PAGE
@@ -7,25 +8,34 @@ class UserPage extends Component {
     const { user } = this.props;
     const name = user.first_name + " " + user.last_name;
     return (
-      <div className="card">
-        <img
-          className="card-img-top"
-          style={{ width: "20vw " }}
-          src={user.avatar}
-          alt="User profile pic"
-        />
-        <h5 className="card-title">{name}</h5>
-        <div className="card-body">
-          <span className="font-weight-bold">Contact: </span>
-          {user.email}
-        </div>
-        <div className="card-body">
-          <span className="font-weight-bold">Lid sinds: </span>
-          {user.created_at}
-        </div>
-        <div className="card-body">
-          <span className="font-weight-bold">Laats ingelogd: </span>
-          {user.last_login_at}
+      <div className="user-cont">
+        <div>
+          <div className="user-frame">
+            <img
+              className="user-image"
+              src={user.avatar}
+              alt="User profile pic"
+              style={{ border: "1em solid" + user.favorite_color }}
+            />
+          </div>
+          <h2>{name}</h2>
+          <div className="user-body">
+            <div className="user-stick"></div>
+          </div>
+          <div className="user-feet">
+            <div>
+              <span className="user-bold">Contact: </span>
+              {user.email}
+            </div>
+            <div>
+              <span className="user-bold">Lid sinds: </span>
+              {user.created_at}
+            </div>
+            <div>
+              <span className="user-bold">Laats ingelogd: </span>
+              {user.last_login_at}
+            </div>
+          </div>
         </div>
       </div>
     );

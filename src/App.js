@@ -44,6 +44,8 @@ class App extends Component {
               "linear-gradient(320deg, rgba(27,41,35,0.9363095580028886) 0%, rgba(19,37,30,0.9475140397956058) 15%, rgba(10,23,18,0.9139005944174545) 30%, rgba(7,18,14,0.9251050762101716) 45%, rgba(5,15,12,0.9391106784510679) 60%, rgba(5,19,14,0.9531162806919643) 75%, rgba(3,0,0,1) 90%)",
             transform: "skew(-25deg)",
             minHeight: "12rem",
+            width: "93vw",
+            margin: "auto",
           }}
         >
           <Navbar.Brand style={{ width: "15vw", marginLeft: "1.1vw" }}>
