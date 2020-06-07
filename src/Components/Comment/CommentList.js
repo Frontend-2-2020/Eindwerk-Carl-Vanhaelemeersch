@@ -4,6 +4,10 @@ import API from "../../libs/API";
 import { getPosts } from "../../redux/actions/postActions";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import "../../css/commentList.css";
+import "../../css/buttons.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 class CommentList extends Component {
   // REMOVE SELECTED COMMENT, THEN LOAD POSTS (DIPLAY ERROR IF FAIL)
@@ -22,22 +26,39 @@ class CommentList extends Component {
   // DIPLAY COMMENT AS WRITTEN BY CODEDITOR
   render() {
     const { comment, auth } = this.props;
+    const name = " " + comment.user.first_name + " " + comment.user.last_name;
     return (
-      <div className="mt-4 border border-primary rounded p-4">
-        <div dangerouslySetInnerHTML={{ __html: comment.body }}></div>
-        <div>
-          Commented by: {comment.user.first_name} {comment.user.last_name}
-        </div>
+      <div className=" com-cont">
         {comment.user.id === auth.id && (
           <div>
             <Link to={"/editComment/" + comment.id}>
-              <span className="badge badge-info">Edit</span>
+              <FontAwesomeIcon
+                icon={faEdit}
+                className="knop-com knop-com-edit"
+              />
             </Link>
-            <span className="badge badge-danger" onClick={this.removeComment}>
-              Remove
-            </span>
+            <FontAwesomeIcon
+              icon={faTrashAlt}
+              className="knop-com knop-com-delete"
+              onClick={this.removeComment}
+            />
           </div>
         )}
+        <div
+          className=" com-body"
+          dangerouslySetInnerHTML={{ __html: comment.body }}
+        ></div>
+        <div className="com-by">
+          Commented by:
+          <Link
+            to={"/user/" + comment.user.id}
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            <span className="text-muted">{name}</span>
+          </Link>
+        </div>
       </div>
     );
   }

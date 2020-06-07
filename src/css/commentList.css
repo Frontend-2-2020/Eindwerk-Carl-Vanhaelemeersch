@@ -1,0 +1,24 @@
+.com-cont {
+  margin: 2em auto 2em auto;
+  position: relative;
+  padding: 4em;
+  border-radius: 15px;
+  background-color: rgb(27, 27, 27);
+}
+
+.com-body {
+  margin: 2em 0;
+}
+
+.com-by {
+  font-size: small;
+}
+
+@media only screen and (max-width: 600px) {
+  .com-cont {
+    padding: 0;
+  }
+  .com-body {
+    text-align: center;
+  }
+}

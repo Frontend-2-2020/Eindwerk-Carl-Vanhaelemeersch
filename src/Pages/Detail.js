@@ -7,6 +7,8 @@ import API from "../libs/API";
 import { Link } from "react-router-dom";
 import Loader from "../Components/Loader";
 import PropTypes from "prop-types";
+import "../css/detail.css";
+import "../css/buttons.css";
 
 class Detail extends Component {
   // WORKING WITH REDUX AND STATE FOR SIMPLER USE AND COMPREHENSION.
@@ -76,47 +78,57 @@ class Detail extends Component {
     // DISPLAY COMMENTS AND POST AS WRITTEN IN CODEDITOR
     return (
       <div className="container">
-        {this.state.posts.user.id === this.props.auth.id && (
-          <div>
-            <Link to={"/editPost/" + posts.id}>
-              <span className="badge badge-info">Edit</span>
-            </Link>
-            <span
-              className="badge badge-danger"
-              onClick={this.removePostFromDetail}
-            >
-              Remove
-            </span>
+        <div className="detail-cont">
+          <div className="detail-post">
+            {this.state.posts.user.id === this.props.auth.id && (
+              <div>
+                <Link to={"/editPost/" + posts.id}>
+                  <span className="knop editen">Edit</span>
+                </Link>
+                <span
+                  className="knop deleten"
+                  onClick={this.removePostFromDetail}
+                >
+                  Remove
+                </span>
+              </div>
+            )}
+            <h1 className="detail-title">{posts.title}</h1>
+            <div
+              className="detail-body"
+              dangerouslySetInnerHTML={{ __html: posts.body }}
+            ></div>
+            <p className="detail-created">
+              <b>Created by:</b>{" "}
+              <Link
+                to={"/user/" + posts.user.id}
+                style={{ textDecoration: "none" }}
+              >
+                <span className="text-muted">
+                  {posts.user.first_name + "" + posts.user.last_name}
+                </span>
+              </Link>
+            </p>
           </div>
-        )}
-        <h1>{posts.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: posts.body }}></div>
-        <p>
-          <b>Created by:</b>{" "}
-          <Link to={"/user/" + posts.user.id}>
-            <span className="text-muted">
-              {posts.user.first_name + "" + posts.user.last_name}
-            </span>
-          </Link>
-        </p>
 
-        <div className="container w-50">
-          {this.state.posts.comments.map((comment) => (
-            <CommentList
-              comment={comment}
+          <div className="detail-comment-list">
+            {this.state.posts.comments.map((comment) => (
+              <CommentList
+                comment={comment}
+                getPostsByID={this.getPostsByID}
+                key={comment.id}
+              />
+            ))}
+          </div>
+          {/* CAN ONLY COMMENT IF LOGGED IN */}
+          {auth.last_name && (
+            <CommentPost
+              posts={posts}
               getPostsByID={this.getPostsByID}
-              key={comment.id}
+              onSubmit={this.onSubmit}
             />
-          ))}
+          )}
         </div>
-        {/* CAN ONLY COMMENT IF LOGGED IN */}
-        {auth.last_name && (
-          <CommentPost
-            posts={posts}
-            getPostsByID={this.getPostsByID}
-            onSubmit={this.onSubmit}
-          />
-        )}
       </div>
     );
   }

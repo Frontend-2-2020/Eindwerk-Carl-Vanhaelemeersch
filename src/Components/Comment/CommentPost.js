@@ -21,7 +21,7 @@ class CommentPost extends Component {
   render() {
     const { onSubmit } = this.props;
     return (
-      <div className="container m-5" id="commentPost">
+      <div id="commentPost">
         <Formik
           onSubmit={onSubmit}
           // Making sure that the register form is always empty at the start

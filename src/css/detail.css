@@ -1,0 +1,47 @@
+.detail-cont {
+  color: white;
+  width: 100%;
+  min-height: 18em;
+  padding: 1vw;
+  margin: 3em 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 15px;
+  overflow: hidden;
+}
+.detail-post {
+  background-color: rgb(27, 27, 27);
+  border-radius: 15px;
+  position: relative;
+  padding: 1em;
+  margin-bottom: 4em;
+}
+
+.detail-title {
+  text-align: center;
+  font-size: 3em;
+  margin-top: 1em;
+}
+
+.detail-body {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 5em;
+}
+
+.detail-created {
+  margin-left: 1em;
+  text-align: right;
+}
+.detail-comment-list {
+  width: 60vw;
+  margin: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .detail-created {
+    text-align: center;
+  }
+  .detail-comment-list {
+    width: 70vw;
+  }
+}

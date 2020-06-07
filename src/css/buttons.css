@@ -8,6 +8,27 @@
   min-width: 4.8em;
   text-align: center;
 }
+
+.knop-com {
+  font-size: 1.5em;
+  position: absolute;
+}
+
+.knop-com-edit {
+  color: rgb(13, 197, 68);
+  top: 1em;
+  left: 1em;
+}
+
+.knop-com-delete {
+  color: rgb(250, 0, 0);
+  top: 1em;
+  left: 2.5em;
+}
+.knop-com-delete:hover {
+  cursor: pointer;
+}
+
 .deleten {
   background-color: rgba(190, 31, 3, 0.788);
   top: 1em;
@@ -41,5 +62,8 @@
 @media only screen and (max-width: 600px) {
   .knop {
     font-size: 0.6em;
+  }
+  .knop-com {
+    position: relative;
   }
 }

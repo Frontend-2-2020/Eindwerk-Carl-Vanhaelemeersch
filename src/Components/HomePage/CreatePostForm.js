@@ -10,6 +10,7 @@ class CreatePostForm extends Component {
   // FORM TO WRITE COMMENTS IN. IF NOT VALID, ERRORMESSAGE
   render() {
     const { values, setFieldValue } = this.props;
+
     return (
       <Form id="clearForm">
         <div className="form-row ck-container">
