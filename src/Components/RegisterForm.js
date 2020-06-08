@@ -1,12 +1,22 @@
 import React, { Component } from "react";
 import { Form, Field } from "formik";
 import CustomErrorMessage from "./CustomErrorMessage";
+import "../css/buttons.css";
 
 class RegisterForm extends Component {
   render() {
     // DISPLAY OF OUR FORM WITH CUSTOMERRORMESSAGE IF ANY
     return (
-      <Form>
+      <Form
+        style={{
+          minHeight: "50vh",
+          margin: "3em auto",
+          backgroundColor: "black",
+          padding: "3em",
+          borderRadius: "15px",
+          color: "white",
+        }}
+      >
         <div className="form-row mt-4">
           <div className="col-md-6">
             <label htmlFor="first_name">Voornaam</label>
@@ -70,13 +80,18 @@ class RegisterForm extends Component {
               id="favorite_color"
               required
               className="form-control"
+              style={{
+                width: "7em",
+                minHeight: "5em",
+                borderRadius: "15px%",
+              }}
             />
             <CustomErrorMessage name="favorite_color" />
           </div>
         </div>
 
-        <button type="submit" className="btn btn-primary float-right mt-4">
-          Submit
+        <button type="submit" className="knop-sub knop-sub-com">
+          Register
         </button>
       </Form>
     );

@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 import { Form, Field } from "formik";
 import CustomErrorMessage from "./CustomErrorMessage";
+import "../css/buttons.css";
 
 class LoginForm extends Component {
   render() {
     // DISPLAY OF OUR FORM WITH CUSTOMERRORMESSAGE TO LOGIN
     return (
-      <Form className="container">
+      <Form
+        style={{ minHeight: "50vh", margin: "4em auto 0 auto", width: "70%" }}
+      >
         <div className="form-group mt-4">
-          <label htmlFor="email">Email address</label>
+          <label htmlFor="email" style={{ fontWeight: "bold" }}>
+            Email address
+          </label>
           <Field
             name="email"
             type="email"
@@ -22,7 +27,9 @@ class LoginForm extends Component {
         </div>
 
         <div className="form-group mt-4">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password" style={{ fontWeight: "bold" }}>
+            Password
+          </label>
           <Field
             name="password"
             type="password"
@@ -34,8 +41,8 @@ class LoginForm extends Component {
           <CustomErrorMessage name="password" />
         </div>
 
-        <div className="form-check mt-4"></div>
-        <button type="submit" className="btn btn-block btn-primary">
+        <div className="form-check "></div>
+        <button type="submit" className="knop-sub knop-sub-home">
           Sign in
         </button>
       </Form>

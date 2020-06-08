@@ -67,6 +67,7 @@ class Register extends Component {
             last_name: "",
             email: "",
             password: "",
+            favorite_color: "#03fcf0",
           }}
           validate={this.validate}
         >
