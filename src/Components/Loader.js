@@ -1,10 +1,4 @@
-import React, { Component } from "react";
-
-class Loader extends Component {
-  // IT'S A LOADER... WHAT DO YOU EXPECT?
-  render() {
-    return <div>...Loading</div>;
-  }
-}
-
-export default Loader;
+import React from "react";
+import { EatLoading } from "react-loadingg";
+const Container = () => <EatLoading />;
+export default Container;
